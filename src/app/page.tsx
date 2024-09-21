@@ -1,8 +1,9 @@
 "use client";
+import { useAnimation } from "framer-motion"; // Import framer-motion
+import { ArrowRight, BarChart3, FileText, Leaf, Lightbulb, Quote } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react"; // Add useEffect and useState
-import { motion, useAnimation } from "framer-motion"; // Import framer-motion
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false); // State to track scroll
@@ -21,16 +22,42 @@ export default function Home() {
     controls.start({ opacity: scrolled ? 1 : 0.8 }); // Animate opacity based on scroll
   }, [scrolled, controls]);
 
+
+  const services = [
+    {
+      title: "Sustainability Consulting",
+      description: "Strategy development, climate risk assessment, and ESG reporting.",
+      icon: Lightbulb,
+    },
+    {
+      title: "Carbon Credit Generation",
+      description: "Project development, trading, and verification for emission offsetting.",
+      icon: BarChart3,
+    },
+    {
+      title: "Documentation and Registration",
+      description: "Streamline ISO certifications and carbon footprint reporting.",
+      icon: FileText,
+    },
+  ]
+
+  const insights = [
+    {
+      title: "Sustainability Trends for 2023",
+      description: "Explore the latest sustainability trends shaping the corporate landscape.",
+    },
+    {
+      title: "Case Study: Achieving Net-Zero",
+      description: "Learn how our client reduced their carbon footprint and achieved net-zero emissions.",
+    },
+    {
+      title: "The Future of Carbon Markets",
+      description: "Insights from our experts on the evolving landscape of carbon trading.",
+    },
+  ]
+
   return (
     <div className="space-y-24">
-      <motion.nav
-        className={`fixed top-0 left-0 w-full p-4 transition-all ${
-          scrolled ? "bg-white" : "bg-transparent"
-        }`}
-        animate={controls}
-      >
-        {/* Navbar content here */}
-      </motion.nav>
       <section className="relative h-screen flex items-center">
         <div className="absolute inset-0 z-0">
           <video
@@ -43,57 +70,85 @@ export default function Home() {
           />
           <div className="absolute inset-0 bg-black opacity-50"></div>
         </div>
-        <div className="container mx-auto px-4 z-10 text-white">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Leveraging Sustainability Innovation for a Net-Zero Future
+        <div className="container flex flex-col items-center mx-auto px-4 z-10 text-white">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-center leading-tight">
+            Driving <span className="text-green-400">Sustainable</span> Change
           </h1>
           <p className="text-xl md:text-2xl mb-8">
             Your Partner for a Net-Zero Future
           </p>
-          <Link
-            href="/contact"
-            className="bg-[#34D399] text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#2ebb85] transition-colors shadow-lg"
-          >
-            Start Your Sustainability Journey
+          <Link href={"/contact"} className="relative px-6 py-3 group">
+            {/* Blurred background */}
+            <div className="absolute inset-0 bg-white/10 backdrop-blur-md rounded-lg group-hover:bg-white/20 transition-colors duration-300 ease-in-out"></div>
+
+            {/* Button content */}
+            <div className="relative flex items-center space-x-2 text-white">
+              <span className="font-medium">Get Started</span>
+              <ArrowRight className="w-5 h-5 transition-transform duration-300 ease-in-out group-hover:translate-x-1" />
+            </div>
           </Link>
         </div>
       </section>
 
-      <section className="container mx-auto px-4">
-        <div className="grid md:grid-cols-3 gap-12">
+      <section className="bg-gradient-to-b from-white to-emerald-50 py-24">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl font-bold mb-12 text-center text-gray-800">Our Services</h2>
+        <div className="grid md:grid-cols-3 gap-8">
           {[
-            {
-              title: "Tailored Sustainability Strategies",
-              description:
-                "Develop customized roadmaps aligning with your business goals and industry standards.",
-            },
-            {
-              title: "Cutting-Edge Climate Change Solutions",
-              description:
-                "Leverage our AI-powered platform to optimize resource efficiency and minimize carbon emissions.",
-            },
-            {
-              title: "Carbon Market Authority",
-              description:
-                "Comprehensive carbon credit solutions, including project development, trading, and digital transformation.",
-            },
-          ].map((item, index) => (
+    {
+      title: "Tailored Sustainability Strategies",
+      description: "Develop customized roadmaps aligning with your business goals and industry standards.",
+      icon: Lightbulb,
+    },
+    {
+      title: "Cutting-Edge Climate Change Solutions",
+      description: "Leverage our AI-powered platform to optimize resource efficiency and minimize carbon emissions.",
+      icon: Leaf,
+    },
+    {
+      title: "Carbon Market Authority",
+      description: "Comprehensive carbon credit solutions, including project development, trading, and digital transformation.",
+      icon: BarChart3,
+    },
+  ].map((service, index) => (
             <div
               key={index}
-              className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow border-t-4 border-[#34D399]"
+              className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 group hover:-translate-y-2"
             >
-              <h2 className="text-2xl font-semibold mb-4 text-[#34D399]">
-                {item.title}
-              </h2>
-              <p className="text-gray-600">{item.description}</p>
+              <div className="flex items-center mb-6">
+                <div className="bg-emerald-100 p-3 rounded-full mr-4 group-hover:bg-emerald-200 transition-colors duration-300">
+                  <service.icon className="w-6 h-6 text-emerald-600" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-800 group-hover:text-emerald-600 transition-colors duration-300">
+                  {service.title}
+                </h3>
+              </div>
+              <p className="text-gray-600 leading-relaxed">{service.description}</p>
+              <div className="mt-6">
+                <a
+                  href="#"
+                  className="text-emerald-600 font-medium hover:text-emerald-700 transition-colors duration-300 flex items-center"
+                >
+                  Learn more
+                  <svg
+                    className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
             </div>
           ))}
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section className="bg-gray-100 py-24">
+      <section className="bg-white py-24">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-12 text-center">
+          <h2 className="text-4xl font-bold mb-12 text-center text-gray-800">
             Success Stories
           </h2>
           <div className="grid md:grid-cols-2 gap-12">
@@ -112,95 +167,65 @@ export default function Home() {
             ].map((testimonial, index) => (
               <div
                 key={index}
-                className="bg-white p-8 rounded-lg shadow-lg relative"
+                className="bg-gradient-to-br from-emerald-50 to-white p-8 rounded-lg shadow-md relative overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
               >
-                <svg
-                  className="absolute top-0 left-0 transform -translate-x-4 -translate-y-4 h-16 w-16 text-[#34D399] opacity-50"
-                  fill="currentColor"
-                  viewBox="0 0 32 32"
-                  aria-hidden="true"
-                >
-                  <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
-                </svg>
-                <p className="relative z-10 text-xl italic mb-4 text-gray-600">
-                  {testimonial.quote}
-                </p>
-                <p className="font-semibold text-[#34D399]">
-                  {testimonial.author}
-                </p>
+                <Quote className="absolute top-4 left-4 h-12 w-12 text-emerald-200 opacity-50" />
+                <div className="relative z-10">
+                  <p className="text-lg mb-4 text-gray-700 leading-relaxed">
+                  &quot;{testimonial.quote}&quot;
+                  </p>
+                  <p className="font-semibold text-emerald-600">
+                    {testimonial.author}
+                  </p>
+                </div>
+                <div className="absolute bottom-0 right-0 w-24 h-24 bg-emerald-100 rounded-tl-full opacity-50" />
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold mb-12 text-center">Our Services</h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          {[
-            {
-              title: "Sustainability Consulting",
-              description:
-                "Strategy development, climate risk assessment, and ESG reporting.",
-            },
-            {
-              title: "Carbon Credit Generation",
-              description:
-                "Project development, trading, and verification for emission offsetting.",
-            },
-            {
-              title: "Documentation and Registration",
-              description:
-                "Streamline ISO certifications and carbon footprint reporting.",
-            },
-          ].map((service, index) => (
-            <div
-              key={index}
-              className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex flex-col"
-            >
-              <h3 className="text-xl font-semibold mb-4 text-[#34D399]">
-                {service.title}
-              </h3>
-              <p className="text-gray-600 flex-grow">{service.description}</p>
-              <Link
-                href={`/services/${service.title
-                  .toLowerCase()
-                  .replace(/\s+/g, "-")}`}
-                className="mt-4 text-[#34D399] hover:underline"
+      <section className="bg-white py-24">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold mb-12 text-center text-gray-800">Our Services</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 group hover:-translate-y-2"
               >
-                Learn more →
-              </Link>
-            </div>
-          ))}
+                <div className="flex items-center mb-6">
+                  <div className="bg-emerald-100 p-3 rounded-full mr-4 group-hover:bg-emerald-200 transition-colors duration-300">
+                    <service.icon className="w-6 h-6 text-emerald-600" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-800 group-hover:text-emerald-600 transition-colors duration-300">
+                    {service.title}
+                  </h3>
+                </div>
+                <p className="text-gray-600 leading-relaxed mb-6">{service.description}</p>
+                <Link
+                  href={`/services/${service.title.toLowerCase().replace(/\s+/g, "-")}`}
+                  className="text-emerald-600 font-medium hover:text-emerald-700 transition-colors duration-300 flex items-center"
+                >
+                  Learn more
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="bg-[#34D399] text-white py-24">
+      <section className="bg-emerald-600 text-white py-24">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold mb-12 text-center">
             Latest Insights
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Sustainability Trends for 2023",
-                description:
-                  "Explore the latest sustainability trends shaping the corporate landscape.",
-              },
-              {
-                title: "Case Study: Achieving Net-Zero",
-                description:
-                  "Learn how our client reduced their carbon footprint and achieved net-zero emissions.",
-              },
-              {
-                title: "The Future of Carbon Markets",
-                description:
-                  "Insights from our experts on the evolving landscape of carbon trading.",
-              },
-            ].map((post, index) => (
+            {insights.map((post, index) => (
               <div
                 key={index}
-                className="bg-white rounded-lg shadow-md overflow-hidden"
+                className="bg-white rounded-2xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
               >
                 <Image
                   src="/placeholder.svg?height=200&width=400"
@@ -215,12 +240,11 @@ export default function Home() {
                   </h3>
                   <p className="text-gray-600 mb-4">{post.description}</p>
                   <Link
-                    href={`/blog/${post.title
-                      .toLowerCase()
-                      .replace(/\s+/g, "-")}`}
-                    className="text-[#34D399] hover:underline"
+                    href={`/blog/${post.title.toLowerCase().replace(/\s+/g, "-")}`}
+                    className="text-emerald-600 font-medium hover:text-emerald-700 transition-colors duration-300 flex items-center"
                   >
-                    Read more →
+                    Read more
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
                   </Link>
                 </div>
               </div>
@@ -229,18 +253,23 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="container mx-auto px-4 text-center">
-        <h2 className="text-4xl font-bold mb-8">Ready to Make a Difference?</h2>
-        <p className="text-xl mb-8 text-gray-600">
-          Join us in creating a sustainable future for generations to come.
-        </p>
-        <Link
-          href="/contact"
-          className="bg-[#34D399] text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#2ebb85] transition-colors shadow-lg"
-        >
-          Get Started Today
-        </Link>
+<section className="bg-gradient-to-b from-emerald-50 to-white py-24 text-center">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold mb-8 text-gray-800">Ready to Make a Difference?</h2>
+          <p className="text-xl mb-12 text-gray-600 max-w-2xl mx-auto">
+            Join us in creating a sustainable future for generations to come.
+          </p>
+          <Link
+            href="/contact"
+            className="bg-emerald-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-emerald-700 transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center"
+          >
+            Get Started Today
+            <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+          </Link>
+        </div>
       </section>
+
+       
     </div>
   );
 }

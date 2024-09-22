@@ -25,7 +25,7 @@ export default function About() {
 
       <section className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6 text-[#34D399]">Our Story</h2>
+          <h2 className="text-3xl font-bold mb-6 text-primary">Our Story</h2>
           <p className="text-gray-600 mb-6">
             Terrasols Solutions Private Limited is a pioneering sustainability
             consultancy committed to driving positive change. With a team of
@@ -48,7 +48,7 @@ export default function About() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-6 text-[#34D399]">
+              <h2 className="text-3xl font-bold mb-6 text-primary">
                 Our Mission
               </h2>
               <p className="text-gray-600 mb-4">
@@ -56,7 +56,7 @@ export default function About() {
                 future by providing innovative solutions, expert guidance, and
                 cutting-edge technologies.
               </p>
-              <h2 className="text-3xl font-bold mb-6 text-[#34D399]">
+              <h2 className="text-3xl font-bold mb-6 text-primary">
                 Our Vision
               </h2>
               <p className="text-gray-600">
@@ -79,7 +79,7 @@ export default function About() {
       </section>
 
       <section className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-12 text-center text-[#34D399]">
+        <h2 className="text-3xl font-bold mb-12 text-center text-primary">
           Our Expertise
         </h2>
         <div className="grid md:grid-cols-2 gap-8">
@@ -109,7 +109,7 @@ export default function About() {
               key={index}
               className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-start"
             >
-              <div className="bg-[#34D399] text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4 flex-shrink-0">
+              <div className="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4 flex-shrink-0">
                 {index + 1}
               </div>
               <div>
@@ -121,7 +121,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="bg-[#34D399] text-white py-24">
+      <section className="bg-primary text-white py-24">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-12 text-center">
             Meet Our Team
@@ -164,7 +164,7 @@ export default function About() {
         </p>
         <a
           href="#"
-          className="bg-[#34D399] text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#2ebb85] transition-colors shadow-lg"
+          className="bg-primary text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#2ebb85] transition-colors shadow-lg"
         >
           Book a Consultation
         </a>

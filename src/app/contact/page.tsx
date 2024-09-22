@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 export default function Contact() {
   return (
     <div className="space-y-24">
-      <section className="relative h-[40vh] flex items-center bg-[#34D399]">
+      <section className="relative h-[40vh] flex items-center bg-primary">
         <div className="container mx-auto px-4 z-10 text-white">
           <h1 className="text-5xl md:text-7xl font-bold mb-6">Get in Touch</h1>
           <p className="text-xl md:text-2xl">
@@ -19,13 +19,13 @@ export default function Contact() {
         <div className="max-w-5xl mx-auto bg-white shadow-2xl rounded-lg overflow-hidden">
           <div className="grid md:grid-cols-2">
             <div className="p-8 bg-gray-100">
-              <h2 className="text-2xl font-bold mb-6 text-[#34D399]">
+              <h2 className="text-2xl font-bold mb-6 text-primary">
                 Contact Information
               </h2>
               <ul className="space-y-4 text-gray-600">
                 <li className="flex items-center">
                   <svg
-                    className="w-6 h-6 mr-2 text-[#34D399]"
+                    className="w-6 h-6 mr-2 text-primary"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -48,7 +48,7 @@ export default function Contact() {
                 </li>
                 <li className="flex items-center">
                   <svg
-                    className="w-6 h-6 mr-2 text-[#34D399]"
+                    className="w-6 h-6 mr-2 text-primary"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -65,7 +65,7 @@ export default function Contact() {
                 </li>
                 <li className="flex items-center">
                   <svg
-                    className="w-6 h-6 mr-2 text-[#34D399]"
+                    className="w-6 h-6 mr-2 text-primary"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -82,13 +82,13 @@ export default function Contact() {
                 </li>
               </ul>
 
-              <h2 className="text-2xl font-bold mt-12 mb-6 text-[#34D399]">
+              <h2 className="text-2xl font-bold mt-12 mb-6 text-primary">
                 Connect with Us
               </h2>
               <div className="flex space-x-4">
                 <a
                   href="#"
-                  className="text-[#34D399] hover:text-[#2ebb85] transition-colors"
+                  className="text-primary hover:text-[#2ebb85] transition-colors"
                 >
                   <svg
                     className="w-8 h-8"
@@ -105,7 +105,7 @@ export default function Contact() {
                 </a>
                 <a
                   href="#"
-                  className="text-[#34D399] hover:text-[#2ebb85] transition-colors"
+                  className="text-primary hover:text-[#2ebb85] transition-colors"
                 >
                   <svg
                     className="w-8 h-8"
@@ -118,7 +118,7 @@ export default function Contact() {
                 </a>
                 <a
                   href="#"
-                  className="text-[#34D399] hover:text-[#2ebb85] transition-colors"
+                  className="text-primary hover:text-[#2ebb85] transition-colors"
                 >
                   <svg
                     className="w-8 h-8"
@@ -136,7 +136,7 @@ export default function Contact() {
               </div>
             </div>
             <div className="p-8">
-              <h2 className="text-2xl font-bold mb-6 text-[#34D399]">
+              <h2 className="text-2xl font-bold mb-6 text-primary">
                 Send Us a Message
               </h2>
               <form className="space-y-6">
@@ -202,7 +202,7 @@ export default function Contact() {
                 </div>
                 <Button
                   type="submit"
-                  className="w-full bg-[#34D399] hover:bg-[#2ebb85]"
+                  className="w-full bg-primary hover:bg-[#2ebb85]"
                 >
                   Send Message
                 </Button>
@@ -212,7 +212,7 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="bg-[#34D399] text-white py-24">
+      <section className="bg-primary text-white py-24">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">
             Ready to Start Your Sustainability Journey?
@@ -221,7 +221,7 @@ export default function Contact() {
             Our team of experts is here to help you achieve your sustainability
             goals.
           </p>
-          <Button className="bg-white text-[#34D399] hover:bg-gray-100">
+          <Button className="bg-white text-primary hover:bg-gray-100">
             Schedule a Free Consultation
           </Button>
         </div>

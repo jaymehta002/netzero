@@ -25,7 +25,7 @@ export default function NetZero() {
 
       <section className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6 text-[#34D399]">
+          <h2 className="text-3xl font-bold mb-6 text-primary">
             Our Approach to Net Zero
           </h2>
           <p className="text-gray-600 mb-6">
@@ -39,7 +39,7 @@ export default function NetZero() {
 
       <section className="bg-gray-100 py-24">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-12 text-center text-[#34D399]">
+          <h2 className="text-3xl font-bold mb-12 text-center text-primary">
             Key Benefits
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -78,7 +78,7 @@ export default function NetZero() {
                 key={index}
                 className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
               >
-                <h3 className="text-xl font-semibold mb-2 text-[#34D399]">
+                <h3 className="text-xl font-semibold mb-2 text-primary">
                   {benefit.title}
                 </h3>
                 <p className="text-gray-600">{benefit.description}</p>
@@ -89,11 +89,11 @@ export default function NetZero() {
       </section>
 
       <section className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-12 text-center text-[#34D399]">
+        <h2 className="text-3xl font-bold mb-12 text-center text-primary">
           Our Net Zero Process
         </h2>
         <div className="relative">
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-[#34D399]"></div>
+          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-primary"></div>
           <div className="space-y-24">
             {[
               {
@@ -135,13 +135,13 @@ export default function NetZero() {
               >
                 <div className="w-1/2 px-4">
                   <div className="bg-white p-6 rounded-lg shadow-md">
-                    <h3 className="text-xl font-semibold mb-2 text-[#34D399]">
+                    <h3 className="text-xl font-semibold mb-2 text-primary">
                       {step.title}
                     </h3>
                     <p className="text-gray-600">{step.description}</p>
                   </div>
                 </div>
-                <div className="w-10 h-10 bg-[#34D399] rounded-full border-4 border-white z-10"></div>
+                <div className="w-10 h-10 bg-primary rounded-full border-4 border-white z-10"></div>
                 <div className="w-1/2 px-4"></div>
               </div>
             ))}
@@ -149,7 +149,7 @@ export default function NetZero() {
         </div>
       </section>
 
-      <section className="bg-[#34D399] text-white py-24">
+      <section className="bg-primary text-white py-24">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-12 text-center">
             Our Net Zero Services
@@ -182,7 +182,7 @@ export default function NetZero() {
 
       <section className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto bg-gray-100 p-8 rounded-lg shadow-lg">
-          <h2 className="text-3xl font-bold mb-6 text-center text-[#34D399]">
+          <h2 className="text-3xl font-bold mb-6 text-center text-primary">
             Case Study
           </h2>
           <blockquote className="italic text-xl mb-4 text-gray-600">
@@ -191,19 +191,19 @@ export default function NetZero() {
             bottom line.&quot;
           </blockquote>
 
-          <p className="font-semibold text-right text-[#34D399]">
+          <p className="font-semibold text-right text-primary">
             - Jane Doe, CEO of Eco Innovations
           </p>
         </div>
       </section>
 
       <section className="text-center">
-        <h2 className="text-3xl font-bold mb-6 text-[#34D399]">
+        <h2 className="text-3xl font-bold mb-6 text-primary">
           Ready to Start Your Net Zero Journey?
         </h2>
         <a
           href="#"
-          className="bg-[#34D399] text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#2ebb85] transition-colors shadow-lg"
+          className="bg-primary text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#2ebb85] transition-colors shadow-lg"
         >
           Schedule a Consultation
         </a>

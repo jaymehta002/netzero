@@ -61,7 +61,7 @@ const Timeline = () => {
   return (
     <div className="bg-white py-16 px-6 min-h-screen flex flex-col justify-center">
       <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-12 text-center text-emerald-600">
-        Heavy Animated 3-Step Process
+        Simple 3-Step Process
       </h2>
 
       {/* Step container */}

@@ -56,11 +56,13 @@ export default function Globe({
     },
   }));
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const updatePointerInteraction = (value: any) => {
     pointerInteracting.current = value;
     canvasRef.current!.style.cursor = value ? "grabbing" : "grab";
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const updateMovement = (clientX: any) => {
     if (pointerInteracting.current !== null) {
       const delta = clientX - pointerInteracting.current;
@@ -70,7 +72,9 @@ export default function Globe({
   };
 
   const onRender = useCallback(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (state: Record<string, any>) => {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       if (!pointerInteracting.current) phi += 0.005;
       state.phi = phi + r.get();
       state.width = width * 2;

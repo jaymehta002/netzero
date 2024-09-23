@@ -14,7 +14,7 @@ const Navbar = () => {
   }, [scrollY]);
   return (
     <motion.header
-      className="fixed w-full px-4 py-6 flex justify-between items-center z-[999] transition-colors duration-300"
+      className="fixed w-full px-4 py-6 flex justify-between  items-center z-[999] transition-colors duration-300"
       initial={false}
       animate={{ opacity: 1 }}
       style={{
@@ -25,7 +25,7 @@ const Navbar = () => {
         WebkitBackdropFilter: isScrolled ? "blur(10px)" : "none", // Ensures cross-browser support
       }}
     >
-      <Link href="/" className="text-2xl font-bold text-green-500">
+      <Link href="/" className="text-2xl font-bold text-primary">
         Terrasols.earth
       </Link>
       <button
@@ -58,9 +58,8 @@ const Navbar = () => {
             href="/"
             className="block py-2 hover:text-gray-200 transition-colors"
             style={{
-        color: isScrolled
-          ? "black"
-          : "white"}}
+              color: isScrolled ? "black" : "white",
+            }}
           >
             Home
           </Link>
@@ -70,9 +69,8 @@ const Navbar = () => {
             href="/about"
             className="block py-2 hover:text-gray-200 transition-colors"
             style={{
-        color: isScrolled
-          ? "black"
-          : "white"}}
+              color: isScrolled ? "black" : "white",
+            }}
           >
             About
           </Link>
@@ -82,23 +80,21 @@ const Navbar = () => {
             href="/net-zero"
             className="block py-2 hover:text-gray-200 transition-colors"
             style={{
-        color: isScrolled
-          ? "black"
-          : "white"}}
+              color: isScrolled ? "black" : "white",
+            }}
           >
             Net Zero
           </Link>
         </li>
         <li>
           <Link
-            href="/carbon-credits"
-            className="block py-2 hover:text-gray-200 transition-colors"
+            href="/projects"
+            className="block py-2   hover:text-gray-200 transition-colors"
             style={{
-        color: isScrolled
-          ? "black"
-          : "white"}}
+              color: isScrolled ? "black" : "white",
+            }}
           >
-            Carbon Credits
+            Projects
           </Link>
         </li>
         <li>
@@ -106,9 +102,8 @@ const Navbar = () => {
             href="/contact"
             className="block py-2 hover:text-gray-200 transition-colors"
             style={{
-        color: isScrolled
-          ? "black"
-          : "white"}}
+              color: isScrolled ? "black" : "white",
+            }}
           >
             Contact
           </Link>

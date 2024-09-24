@@ -1,8 +1,48 @@
+"use client"
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
+import { useForm } from "react-hook-form"; // Import useForm
+import { z } from "zod"; // Import zod
+import { zodResolver } from "@hookform/resolvers/zod";  // Import zodResolver
+import { sendEmail } from "./actions";
+import { useState } from "react"; // Import useState
+
+// Define the validation schema using Zod
+const schema = z.object({
+  name: z.string().min(1, "Name is required"),
+  email: z.string().email("Invalid email address"),
+  phone: z.string().min(10, "Phone number must be at least 10 digits"),
+  message: z.string().min(1, "Message is required"),
+});
+
+// Define the form data type
+type FormData = z.infer<typeof schema>;
 
 export default function Contact() {
+  const { register, handleSubmit, formState: { errors }, reset } = useForm<FormData>({
+    resolver: zodResolver(schema),
+  });
+
+  const [isSuccess, setIsSuccess] = useState(false); // New state for success message
+
+  const onSubmit = async (formData: FormData) => {
+    try {
+      const data = await sendEmail(formData);
+      console.log("🚀 ~ onSubmit ~ data:", data);
+      if (data.success) {
+        reset(); // Reset form fields
+        setIsSuccess(true); // Show success message
+        setTimeout(() => setIsSuccess(false), 5000); // Hide success message after 5 seconds
+      } else {
+        // Handle error case
+        console.error("Failed to send email:", data.message);
+      }
+    } catch (error) {
+      console.error("Error sending email:", error);
+    }
+  };
+
   return (
     <section className="py-24 bg-emerald-100">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -101,29 +141,49 @@ export default function Contact() {
             <h2 className="text-[#088F8F] font-manrope text-4xl font-semibold leading-10 mb-11">
               Send Us A Message
             </h2>
-            <Input
-              type="text"
-              className="w-full h-12 text-gray-600 placeholder-gray-400  shadow-sm bg-transparent text-lg font-normal leading-7 rounded-xl border border-gray-200 focus:outline-none pl-4 mb-10"
-              placeholder="Name"
-            />
-            <Input
-              type="text"
-              className="w-full h-12 text-gray-600 placeholder-gray-400 shadow-sm bg-transparent text-lg font-normal leading-7 rounded-xl border border-gray-200 focus:outline-none pl-4 mb-10"
-              placeholder="Email"
-            />
-            <Input
-              type="text"
-              className="w-full h-12 text-gray-600 placeholder-gray-400 shadow-sm bg-transparent text-lg font-normal leading-7 rounded-xl border border-gray-200 focus:outline-none pl-4 mb-10"
-              placeholder="Phone"
-            />
-            <Input
-              type="text"
-              className="w-full h-12 text-gray-600 placeholder-gray-400 bg-transparent text-lg shadow-sm font-normal leading-7 rounded-xl border border-gray-200 focus:outline-none pl-4 mb-10"
-              placeholder="Message"
-            />
-            <Button className="w-full h-12 text-white text-base font-semibold leading-6 rounded-xl transition-all duration-700 hover:bg-green-700 bg-primary shadow-sm">
-              Send
-            </Button>
+            {isSuccess && (
+              <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+                <strong className="font-bold">Success!</strong>
+                <span className="block sm:inline"> Your email has been sent. We will contact you very soon.</span>
+              </div>
+            )}
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <Input
+                {...register("name")}
+                type="text"
+                className="w-full h-12 text-gray-600 placeholder-gray-400 shadow-sm bg-transparent text-lg font-normal leading-7 rounded-xl border border-gray-200 focus:outline-none pl-4 mt-10"
+                placeholder="Name"
+              />
+              {errors.name && <p className="text-red-500">{errors.name.message}</p>}
+
+              <Input
+                {...register("email")}
+                type="text"
+                className="w-full h-12 text-gray-600 placeholder-gray-400 shadow-sm bg-transparent text-lg font-normal leading-7 rounded-xl border border-gray-200 focus:outline-none pl-4 mt-10"
+                placeholder="Email"
+              />
+              {errors.email && <p className="text-red-500">{errors.email.message}</p>}
+
+              <Input
+                {...register("phone")}
+                type="text"
+                className="w-full h-12 text-gray-600 placeholder-gray-400 shadow-sm bg-transparent text-lg font-normal leading-7 rounded-xl border border-gray-200 focus:outline-none pl-4 mt-10"
+                placeholder="Phone"
+              />
+              {errors.phone && <p className="text-red-500">{errors.phone.message}</p>}
+
+              <Input
+                {...register("message")}
+                type="text"
+                className="w-full h-12 text-gray-600 placeholder-gray-400 bg-transparent text-lg shadow-sm font-normal leading-7 rounded-xl border border-gray-200 focus:outline-none pl-4 mt-10"
+                placeholder="Message"
+              />
+              {errors.message && <p className="text-red-500">{errors.message.message}</p>}
+
+              <Button type="submit" className="w-full h-12 text-white text-base font-semibold leading-6 rounded-xl transition-all duration-700 hover:bg-green-700 bg-primary shadow-sm mt-10">
+                Send
+              </Button>
+            </form>
           </div>
         </div>
       </div>

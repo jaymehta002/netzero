@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, Wind, Zap } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export default function Component() {
   return (

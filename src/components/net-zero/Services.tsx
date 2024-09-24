@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/dialog";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import { useState } from "react";
 
 const servicesData = [
   {
@@ -95,12 +94,6 @@ const itemVariants = {
 };
 
 export default function AnimatedServicesSection() {
-  const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
-
-  const toggleCategory = (category: string) => {
-    setExpandedCategory(expandedCategory === category ? null : category);
-  };
-
   return (
     <div className="container mx-auto px-4 py-8">
       <motion.h2

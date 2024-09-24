@@ -48,6 +48,21 @@ export async function sendEmail(data: EmailData) {
       return { success: false, message: 'Failed to send email' };
     }
 
+    // Create logic for sending data in google sheet
+    const url = process.env.GOOGLE_SCRIPT_URL;
+    if (!url) {
+      throw new Error('Google Script URL is not defined');
+    }
+
+    await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+    console.log('Google Sheet updated successfully:');
+
     console.log('Email sent successfully:', resendData);
     return { success: true, message: 'Email sent successfully' };
   } catch (error) {

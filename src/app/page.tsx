@@ -1,4 +1,5 @@
 "use client";
+import Bento from "@/components/Bento";
 import Hero from "@/components/Hero";
 import TextRevealByWord from "@/components/magicui/text-reveal";
 import Services from "@/components/Services";
@@ -48,9 +49,12 @@ export default function Home() {
   return (
     <div className="space-y-24">
       <Hero />
+      {/* <script src="https://climateclock.world/widget-v1.js" async></script>
+      <climate-clock /> */}
       <TextRevealByWord text="Terrasols Solutions Private Limited is a sustainability consulting company dedicated to creating positive changes. We have a team of experienced professionals and a strong focus on innovation. We provide a wide range of services tailored to meet our clients' specific needs" />
-
       <Services />
+
+      <Bento />
       {/* <motion.section className="bg-white py-24">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold mb-12 text-center text-gray-800">
@@ -171,7 +175,6 @@ export default function Home() {
           </div>
         </div>
       </section> */}
-
       <section className="bg-gradient-to-b from-emerald-50 to-white py-24 text-center">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold mb-8 text-gray-800">

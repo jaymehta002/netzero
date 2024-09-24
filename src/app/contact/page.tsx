@@ -1,10 +1,10 @@
-"use client"
+"use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import { useForm } from "react-hook-form"; // Import useForm
 import { z } from "zod"; // Import zod
-import { zodResolver } from "@hookform/resolvers/zod";  // Import zodResolver
+import { zodResolver } from "@hookform/resolvers/zod"; // Import zodResolver
 import { sendEmail } from "./actions";
 import { useState } from "react"; // Import useState
 
@@ -20,7 +20,12 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 export default function Contact() {
-  const { register, handleSubmit, formState: { errors }, reset } = useForm<FormData>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<FormData>({
     resolver: zodResolver(schema),
   });
 
@@ -142,9 +147,15 @@ export default function Contact() {
               Send Us A Message
             </h2>
             {isSuccess && (
-              <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+              <div
+                className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4"
+                role="alert"
+              >
                 <strong className="font-bold">Success!</strong>
-                <span className="block sm:inline"> Your email has been sent. We will contact you very soon.</span>
+                <span className="block sm:inline">
+                  {" "}
+                  Your email has been sent. We will contact you very soon.
+                </span>
               </div>
             )}
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -154,7 +165,9 @@ export default function Contact() {
                 className="w-full h-12 text-gray-600 placeholder-gray-400 shadow-sm bg-transparent text-lg font-normal leading-7 rounded-xl border border-gray-200 focus:outline-none pl-4 mt-10"
                 placeholder="Name"
               />
-              {errors.name && <p className="text-red-500">{errors.name.message}</p>}
+              {errors.name && (
+                <p className="text-red-500">{errors.name.message}</p>
+              )}
 
               <Input
                 {...register("email")}
@@ -162,7 +175,9 @@ export default function Contact() {
                 className="w-full h-12 text-gray-600 placeholder-gray-400 shadow-sm bg-transparent text-lg font-normal leading-7 rounded-xl border border-gray-200 focus:outline-none pl-4 mt-10"
                 placeholder="Email"
               />
-              {errors.email && <p className="text-red-500">{errors.email.message}</p>}
+              {errors.email && (
+                <p className="text-red-500">{errors.email.message}</p>
+              )}
 
               <Input
                 {...register("phone")}
@@ -170,7 +185,9 @@ export default function Contact() {
                 className="w-full h-12 text-gray-600 placeholder-gray-400 shadow-sm bg-transparent text-lg font-normal leading-7 rounded-xl border border-gray-200 focus:outline-none pl-4 mt-10"
                 placeholder="Phone"
               />
-              {errors.phone && <p className="text-red-500">{errors.phone.message}</p>}
+              {errors.phone && (
+                <p className="text-red-500">{errors.phone.message}</p>
+              )}
 
               <Input
                 {...register("message")}
@@ -178,9 +195,14 @@ export default function Contact() {
                 className="w-full h-12 text-gray-600 placeholder-gray-400 bg-transparent text-lg shadow-sm font-normal leading-7 rounded-xl border border-gray-200 focus:outline-none pl-4 mt-10"
                 placeholder="Message"
               />
-              {errors.message && <p className="text-red-500">{errors.message.message}</p>}
+              {errors.message && (
+                <p className="text-red-500">{errors.message.message}</p>
+              )}
 
-              <Button type="submit" className="w-full h-12 text-white text-base font-semibold leading-6 rounded-xl transition-all duration-700 hover:bg-green-700 bg-primary shadow-sm mt-10">
+              <Button
+                type="submit"
+                className="w-full h-12 text-white text-base font-semibold leading-6 rounded-xl transition-all duration-700 hover:bg-green-700 bg-primary shadow-sm mt-10"
+              >
                 Send
               </Button>
             </form>

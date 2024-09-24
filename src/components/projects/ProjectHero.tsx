@@ -33,7 +33,7 @@ const ProjectHero = () => {
   return (
     <div
       ref={heroRef}
-      className="bg-cover bg-slate-100 bg-center h-screen flex items-center justify-center"
+      className="bg-cover  bg-center h-screen flex items-center justify-center"
     >
       <motion.div
         initial={{ opacity: 0, y: -50 }}

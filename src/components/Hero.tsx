@@ -10,7 +10,7 @@ const Hero = () => {
       {/* Background Video with Overlay */}
       <div className="absolute inset-0 z-0">
         <video
-          src="/hero.webp"
+          src="/background.mp4"
           className="object-cover h-full w-full"
           autoPlay
           loop

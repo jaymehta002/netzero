@@ -115,7 +115,7 @@ const Services = () => {
     <section className="py-24 bg-gradient-to-r ">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-14 text-center">
-          <h2 className="text-8xl font-bold text-gray-900 leading-[3.25rem] mb-6 max-w-max lg:max-w-3xl lg:mx-auto">
+          <h2 className="text-4xl text-center md:text-8xl font-bold text-gray-900 leading-[3.25rem] mb-6 lg:max-w-3xl lg:mx-auto">
             Our Services
           </h2>
           <p className="text-lg font-normal text-gray-500 lg:max-w-2xl lg:mx-auto mb-8">

@@ -27,7 +27,7 @@ const Navbar = () => {
       }}
     >
       <Link href="/" className="text-2xl font-bold text-primary">
-        <Image src="/logo2.svg" alt="Terrasols" width={200} height={200} />
+        <Image src="/logo.svg" alt="Terrasols" width={200} height={200} />
       </Link>
       <button
         className="lg:hidden"

@@ -195,10 +195,10 @@ export default function Home() {
             Join us in creating a sustainable future for generations to come.
           </p>
           <Link
-            href="/contact"
+            href="/survey"
             className="bg-primary text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-green-700 transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center"
           >
-            Get Started Today
+            Get Brochure
             <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
           </Link>
         </div>

@@ -2,6 +2,7 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { motion, useScroll } from "framer-motion";
+import Image from "next/image";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -26,7 +27,7 @@ const Navbar = () => {
       }}
     >
       <Link href="/" className="text-2xl font-bold text-primary">
-        Terrasols.earth
+        <Image src="/logo2.svg" alt="Terrasols" width={200} height={200} />
       </Link>
       <button
         className="lg:hidden"

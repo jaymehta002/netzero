@@ -3,6 +3,7 @@
 import { Resend } from 'resend';
 import fs from 'fs/promises';
 import path from 'path';
+import BrochureEmail from '@/components/emailTemplates/Broucher';
 
 // Initialize Resend with your API key
 const apiKey = process.env.RESEND_API_KEY;
@@ -29,12 +30,7 @@ export async function sendEmail(data: EmailData) {
       from: process.env.FROM_EMAIL as string,
       to: [email],
       subject: 'New Contact Form Submission',
-      text: `
-        Name: ${name}
-        Email: ${email}
-        Phone: ${phone}
-        Message: ${message}
-      `,
+      react:BrochureEmail({ userName: name, brochureTitle: 'Ultimate Guide to Our Services' }),
       attachments: [
         {
           filename: 'attachment.pdf',

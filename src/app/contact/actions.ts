@@ -1,14 +1,11 @@
-"use server"
+"use server";
 
-import { Resend } from 'resend';
-import fs from 'fs/promises';
-import path from 'path';
-import BrochureEmail from '@/components/emailTemplates/Broucher';
-
+import BrochureEmail from "@/components/emailTemplates/Broucher";
+import { Resend } from "resend";
 // Initialize Resend with your API key
 const apiKey = process.env.RESEND_API_KEY;
 const resend = new Resend(apiKey);
-
+const pdfUrl = "https://heyzine.com/flip-book/6a449573b5.html";
 interface EmailData {
   name: string;
   email: string;
@@ -18,51 +15,64 @@ interface EmailData {
 
 export async function sendEmail(data: EmailData) {
   const { name, email, phone, message } = data;
-  console.log("🚀 ~ sendEmail ~ name, email, phone, message:", name, email, phone, message)
+  console.log(
+    "🚀 ~ sendEmail ~ name, email, phone, message:",
+    name,
+    email,
+    phone,
+    message
+  );
 
   try {
     // Read the PDF file
-    const pdfPath = path.join(process.cwd(), 'public', 'pdfs', 'netzero.pdf');
-    const pdfContent = await fs.readFile(pdfPath);
+    // const pdfPath = path.join(process.cwd(), 'public', 'pdfs', 'netzero.pdf');
+    // const pdfContent = await fs.readFile(pdfPath);
 
     // Send email using Resend
     const { data: resendData, error } = await resend.emails.send({
       from: process.env.FROM_EMAIL as string,
       to: [email],
-      subject: 'New Contact Form Submission',
-      react:BrochureEmail({ userName: name, brochureTitle: 'Ultimate Guide to Our Services' }),
+      subject: "New Contact Form Submission",
+      react: BrochureEmail({
+        userName: name,
+        brochureTitle: "Ultimate Guide to Our Services",
+      }),
       attachments: [
         {
-          filename: 'attachment.pdf',
-          content: pdfContent,
+          filename: "attachment.pdf",
+          // content: attachment,
+          path: pdfUrl,
         },
       ],
     });
 
     if (error) {
-      console.error('Error sending email:', error);
-      return { success: false, message: 'Failed to send email' };
+      console.error("Error sending email:", error);
+      return { success: false, message: "Failed to send email" };
     }
 
     // Create logic for sending data in google sheet
     const url = process.env.GOOGLE_SCRIPT_URL;
     if (!url) {
-      throw new Error('Google Script URL is not defined');
+      throw new Error("Google Script URL is not defined");
     }
 
     await fetch(url, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     });
-    console.log('Google Sheet updated successfully:');
+    console.log("Google Sheet updated successfully:");
 
-    console.log('Email sent successfully:', resendData);
-    return { success: true, message: 'Email sent successfully' };
+    console.log("Email sent successfully:", resendData);
+    return { success: true, message: "Email sent successfully" };
   } catch (error) {
-    console.error('Error sending email:', error);
-    return { success: false, message: 'An error occurred while sending the email' };
+    console.error("Error sending email:", error);
+    return {
+      success: false,
+      message: "An error occurred while sending the email",
+    };
   }
 }

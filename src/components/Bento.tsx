@@ -34,7 +34,7 @@ export default function Bento() {
         </div>
       </div>
       <div className=" md:col-span-4  flex flex-col gap-5 group/cardthree">
-        <div className=" mb-8 relative rounded-3xl h-[45%] p-8">
+        <div className=" mb-20 relative rounded-3xl h-[45%] p-8">
           <video
             width="100%"
             height="100%"
@@ -60,7 +60,7 @@ export default function Bento() {
             className="relative z-10"
           ></BorderButton>
         </div>
-        <div className=" relative rounded-3xl h-[55%]">
+        <div className=" relative rounded-3xl h-[100%]">
           <div className="  absolute top-5 left-5">
             <BorderButton
               text="Oxygenless?"

@@ -1,8 +1,8 @@
 "use client";
 import Bento from "@/components/Bento";
 import Hero from "@/components/Hero";
-import TextRevealByWord from "@/components/magicui/text-reveal";
 import Services from "@/components/Services";
+import { MaskContainer } from "@/components/ui/svg-mask-effect";
 // import Services from "@/components/Services";
 import { useAnimation } from "framer-motion"; // Import framer-motion and motion
 import { ArrowRight } from "lucide-react";
@@ -49,11 +49,24 @@ export default function Home() {
   return (
     <div className="space-y-24">
       <Hero />
-      {/* <script src="https://climateclock.world/widget-v1.js" async></script>
-      <climate-clock /> */}
-      <TextRevealByWord text="Terrasols Solutions Private Limited is a sustainability consulting company dedicated to creating positive changes. We have a team of experienced professionals and a strong focus on innovation. We provide a wide range of services tailored to meet our clients' specific needs" />
+      <script src="https://climateclock.world/widget-v1.js" async></script>
+      <climate-clock />
+      <MaskContainer
+        revealText={
+          <p className="max-w-4xl mx-auto text-slate-800 text-center  text-4xl font-bold">
+            <span className="text-primary">Terrasols Solutions</span> Private
+            Limited is a sustainability consulting company dedicated to creating
+            positive changes. We have a team of experienced professionals and a
+            strong focus on innovation.
+          </p>
+        }
+        className="h-[40rem] rounded-md"
+        revealSize={400}
+      >
+        We&apos;re a global team on a mission to make sure that every business
+        has an actionable sustainability programme.
+      </MaskContainer>
       <Services />
-
       <Bento />
       {/* <motion.section className="bg-white py-24">
         <div className="container mx-auto px-4">
@@ -99,7 +112,6 @@ export default function Home() {
           </div>
         </div>
       </motion.section> */}
-
       {/* <section className="bg-white py-24">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold mb-12 text-center text-gray-800">
@@ -136,7 +148,6 @@ export default function Home() {
           </div>
         </div>
       </section> */}
-
       {/* <section className="bg-emerald-600 text-white py-24">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold mb-12 text-center">

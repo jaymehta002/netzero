@@ -1,6 +1,5 @@
 "use client";
 import Bento from "@/components/Bento";
-import Brochure from "@/components/Brochure";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import { MaskContainer } from "@/components/ui/svg-mask-effect";

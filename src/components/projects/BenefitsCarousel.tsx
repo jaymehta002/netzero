@@ -116,7 +116,7 @@ const ResponsiveBenefitsCarousel: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
+    <div className="w-full min-h-screen overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
       <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-10 text-gray-800 text-center">
         Benefits of Carbon Credit Trading
       </h2>

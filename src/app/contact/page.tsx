@@ -1,23 +1,23 @@
 "use client";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import Image from "next/image";
-import { useForm } from "react-hook-form"; // Import useForm
-import { z } from "zod"; // Import zod
-import { zodResolver } from "@hookform/resolvers/zod"; // Import zodResolver
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { sendEmail } from "./actions";
-import { useState } from "react"; // Import useState
+import { useState } from "react";
 
-// Define the validation schema using Zod
-const schema = z.object({
-  name: z.string().min(1, "Name is required"),
+// Frontend schema (for form validation)
+const frontendSchema = z.object({
+  firstName: z.string().min(1, "First name is required"),
+  lastName: z.string().min(1, "Last name is required"),
   email: z.string().email("Invalid email address"),
   phone: z.string().min(10, "Phone number must be at least 10 digits"),
   message: z.string().min(1, "Message is required"),
 });
 
-// Define the form data type
-type FormData = z.infer<typeof schema>;
+type FrontendFormData = z.infer<typeof frontendSchema>;
 
 export default function Contact() {
   const {
@@ -25,22 +25,28 @@ export default function Contact() {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<FormData>({
-    resolver: zodResolver(schema),
+  } = useForm<FrontendFormData>({
+    resolver: zodResolver(frontendSchema),
   });
 
-  const [isSuccess, setIsSuccess] = useState(false); // New state for success message
+  const [isSuccess, setIsSuccess] = useState(false);
 
-  const onSubmit = async (formData: FormData) => {
+  const onSubmit = async (frontendData: FrontendFormData) => {
     try {
-      const data = await sendEmail(formData);
-      console.log("🚀 ~ onSubmit ~ data:", data);
+      // Combine firstName and lastName into a single name field
+      const backendData = {
+        name: `${frontendData.firstName} ${frontendData.lastName}`,
+        email: frontendData.email,
+        phone: frontendData.phone,
+        message: frontendData.message,
+      };
+
+      const data = await sendEmail(backendData);
       if (data.success) {
-        reset(); // Reset form fields
-        setIsSuccess(true); // Show success message
-        setTimeout(() => setIsSuccess(false), 5000); // Hide success message after 5 seconds
+        reset();
+        setIsSuccess(true);
+        setTimeout(() => setIsSuccess(false), 5000);
       } else {
-        // Handle error case
         console.error("Failed to send email:", data.message);
       }
     } catch (error) {
@@ -49,161 +55,103 @@ export default function Contact() {
   };
 
   return (
-    <section className="py-24 bg-emerald-100">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 grid-cols-1">
-          <div className="lg:mb-0 mb-10">
-            <div className="group w-full h-full">
-              <div className="relative h-full">
-                <Image
-                  src="/assets/contact.jpg"
-                  alt="ContactUs tailwind section"
-                  className="w-full h-full lg:rounded-l-2xl rounded-2xl bg-blend-multiply bg-primary object-cover"
-                  width={500}
-                  height={500}
-                />
-                <h1 className="font-manrope text-white text-4xl font-bold leading-10 absolute top-11 left-11">
-                  Contact us
-                </h1>
-                <div className="absolute bottom-0 w-full lg:p-11 p-5">
-                  <div className="bg-white rounded-lg p-6 block">
-                    <a
-                      href="tel:+918789374657"
-                      className="flex items-center mb-6"
-                    >
-                      <svg
-                        width="30"
-                        height="30"
-                        viewBox="0 0 30 30"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M22.3092 18.3098C22.0157 18.198 21.8689 18.1421 21.7145 18.1287C21.56 18.1154 21.4058 18.1453 21.0975 18.205L17.8126 18.8416C17.4392 18.9139 17.2525 18.9501 17.0616 18.9206C16.8707 18.891 16.7141 18.8058 16.4008 18.6353C13.8644 17.2551 12.1853 15.6617 11.1192 13.3695C10.9964 13.1055 10.935 12.9735 10.9133 12.8017C10.8917 12.6298 10.9218 12.4684 10.982 12.1456L11.6196 8.72559C11.6759 8.42342 11.7041 8.27233 11.6908 8.12115C11.6775 7.96998 11.6234 7.82612 11.5153 7.5384L10.6314 5.18758C10.37 4.49217 10.2392 4.14447 9.95437 3.94723C9.6695 3.75 9.29804 3.75 8.5551 3.75H5.85778C4.58478 3.75 3.58264 4.8018 3.77336 6.06012C4.24735 9.20085 5.64674 14.8966 9.73544 18.9853C14.0295 23.2794 20.2151 25.1426 23.6187 25.884C24.9335 26.1696 26.0993 25.1448 26.0993 23.7985V21.2824C26.0993 20.5428 26.0993 20.173 25.9034 19.8888C25.7076 19.6046 25.362 19.4729 24.6708 19.2096L22.3092 18.3098Z"
-                          stroke="#088F8F"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                      <h5 className="text-black text-base font-normal leading-6 ml-5">
-                        +91 87893 74657
-                      </h5>
-                    </a>
-                    <a
-                      href="mailto:info@netzerosolutions.in"
-                      className="flex items-center mb-6"
-                    >
-                      <svg
-                        width="30"
-                        height="30"
-                        viewBox="0 0 30 30"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M2.81501 8.75L10.1985 13.6191C12.8358 15.2015 14.1544 15.9927 15.6032 15.9582C17.0519 15.9237 18.3315 15.0707 20.8905 13.3647L27.185 8.75M12.5 25H17.5C22.214 25 24.5711 25 26.0355 23.5355C27.5 22.0711 27.5 19.714 27.5 15C27.5 10.286 27.5 7.92893 26.0355 6.46447C24.5711 5 22.214 5 17.5 5H12.5C7.78595 5 5.42893 5 3.96447 6.46447C2.5 7.92893 2.5 10.286 2.5 15C2.5 19.714 2.5 22.0711 3.96447 23.5355C5.42893 25 7.78595 25 12.5 25Z"
-                          stroke="#088F8F"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                        />
-                      </svg>
-                      <h5 className="text-black text-base font-normal leading-6 ml-5">
-                        info@netzerosolutions.in
-                      </h5>
-                    </a>
-                    <a href="#" className="flex items-center">
-                      <svg
-                        width="30"
-                        height="30"
-                        viewBox="0 0 30 30"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M25 12.9169C25 17.716 21.1939 21.5832 18.2779 24.9828C16.8385 26.6609 16.1188 27.5 15 27.5C13.8812 27.5 13.1615 26.6609 11.7221 24.9828C8.80612 21.5832 5 17.716 5 12.9169C5 10.1542 6.05357 7.5046 7.92893 5.55105C9.8043 3.59749 12.3478 2.5 15 2.5C17.6522 2.5 20.1957 3.59749 22.0711 5.55105C23.9464 7.5046 25 10.1542 25 12.9169Z"
-                          stroke="#088F8F"
-                          strokeWidth="2"
-                        />
-                        <path
-                          d="M17.5 11.6148C17.5 13.0531 16.3807 14.219 15 14.219C13.6193 14.219 12.5 13.0531 12.5 11.6148C12.5 10.1765 13.6193 9.01058 15 9.01058C16.3807 9.01058 17.5 10.1765 17.5 11.6148Z"
-                          stroke="#4F46E5"
-                          strokeWidth="2"
-                        />
-                      </svg>
-                      <h5 className="text-black text-base font-normal leading-6 ml-5">
-                        49, Divine Residency, Greater Noida, Uttar Pradesh
-                        201305
-                      </h5>
-                    </a>
-                  </div>
+    <section className="py-20 bg-gradient-to-br from-green-50 to-emerald-100 min-h-screen flex items-center">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div className="space-y-8">
+            <h1 className="text-4xl font-bold text-green-800">Contact Us</h1>
+            <p className="text-gray-600">
+              Email, call, or complete the form to learn how Eco-Friendly can solve your sustainability challenges.
+            </p>
+            <div className="space-y-2">
+              <p className="text-gray-600">info@eco-friendly.com</p>
+              <p className="text-gray-600">123-456-7890</p>
+            </div>
+            <div className="space-y-4">
+              <h2 className="text-xl font-semibold text-green-700">Customer Support</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <h3 className="font-medium text-green-600">Customer Support</h3>
+                  <p className="text-sm text-gray-600">Our support team is available to assist with any questions or issues you may have.</p>
+                </div>
+                <div>
+                  <h3 className="font-medium text-green-600">Feedback and Suggestions</h3>
+                  <p className="text-sm text-gray-600">We&apos;re always looking to improve our services. Your feedback is valuable to us.</p>
+                </div>
+                <div>
+                  <h3 className="font-medium text-green-600">Media Inquiries</h3>
+                  <p className="text-sm text-gray-600">For press-related questions, please contact us at media@eco-friendly.com.</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="bg-gray-50 p-5 lg:p-11 lg:rounded-r-2xl rounded-2xl">
-            <h2 className="text-[#088F8F] font-manrope text-4xl font-semibold leading-10 mb-11">
-              Send Us A Message
-            </h2>
+          <div className="bg-white p-8 rounded-lg shadow-lg">
+            <h2 className="text-2xl font-semibold text-green-800 mb-6">Get in Touch</h2>
+            <p className="text-gray-600 mb-6">You can reach us anytime</p>
             {isSuccess && (
-              <div
-                className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4"
-                role="alert"
-              >
+              <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
                 <strong className="font-bold">Success!</strong>
-                <span className="block sm:inline">
-                  {" "}
-                  Your email has been sent. We will contact you very soon.
-                </span>
+                <span className="block sm:inline"> Your message has been sent. We&apos;ll get back to you soon.</span>
               </div>
             )}
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <Input
-                {...register("name")}
-                type="text"
-                className="w-full h-12 text-gray-600 placeholder-gray-400 shadow-sm bg-transparent text-lg font-normal leading-7 rounded-xl border border-gray-200 focus:outline-none pl-4 mt-10"
-                placeholder="Name"
-              />
-              {errors.name && (
-                <p className="text-red-500">{errors.name.message}</p>
-              )}
-
-              <Input
-                {...register("email")}
-                type="text"
-                className="w-full h-12 text-gray-600 placeholder-gray-400 shadow-sm bg-transparent text-lg font-normal leading-7 rounded-xl border border-gray-200 focus:outline-none pl-4 mt-10"
-                placeholder="Email"
-              />
-              {errors.email && (
-                <p className="text-red-500">{errors.email.message}</p>
-              )}
-
-              <Input
-                {...register("phone")}
-                type="text"
-                className="w-full h-12 text-gray-600 placeholder-gray-400 shadow-sm bg-transparent text-lg font-normal leading-7 rounded-xl border border-gray-200 focus:outline-none pl-4 mt-10"
-                placeholder="Phone"
-              />
-              {errors.phone && (
-                <p className="text-red-500">{errors.phone.message}</p>
-              )}
-
-              <Input
-                {...register("message")}
-                type="text"
-                className="w-full h-12 text-gray-600 placeholder-gray-400 bg-transparent text-lg shadow-sm font-normal leading-7 rounded-xl border border-gray-200 focus:outline-none pl-4 mt-10"
-                placeholder="Message"
-              />
-              {errors.message && (
-                <p className="text-red-500">{errors.message.message}</p>
-              )}
-
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <Input
+                    {...register("firstName")}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    placeholder="First name"
+                  />
+                  {errors.firstName && <p className="mt-1 text-sm text-red-600">{errors.firstName.message}</p>}
+                </div>
+                <div>
+                  <Input
+                    {...register("lastName")}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    placeholder="Last name"
+                  />
+                  {errors.lastName && <p className="mt-1 text-sm text-red-600">{errors.lastName.message}</p>}
+                </div>
+              </div>
+              <div>
+                <Input
+                  {...register("email")}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  placeholder="Your email"
+                  type="email"
+                />
+                {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>}
+              </div>
+              <div>
+                <Input
+                  {...register("phone")}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  placeholder="Phone number"
+                  type="tel"
+                />
+                {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone.message}</p>}
+              </div>
+              <div>
+                <textarea
+                  {...register("message")}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  placeholder="How can we help?"
+                  rows={4}
+                ></textarea>
+                {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>}
+              </div>
+              <div className="flex items-center">
+                <input type="checkbox" id="terms" className="mr-2" required />
+                <label htmlFor="terms" className="text-sm text-gray-600">
+                  By continuing you agree to our <a href="#" className="text-blue-600 hover:underline">Terms of Service</a> and <a href="#" className="text-blue-600 hover:underline">Privacy Policy</a>.
+                </label>
+              </div>
               <Button
                 type="submit"
-                className="w-full h-12 text-white text-base font-semibold leading-6 rounded-xl transition-all duration-700 hover:bg-green-700 bg-primary shadow-sm mt-10"
+                className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md transition duration-300 ease-in-out"
               >
-                Send
+                Submit
               </Button>
             </form>
           </div>

@@ -12,7 +12,7 @@ export default function SvgMaskImage() {
   useEffect(() => {
     const handleResize = () => {
       if (sectionRef.current) {
-        const sectionHeight = sectionRef.current.offsetHeight; // Get section height
+        const sectionHeight = (sectionRef.current as HTMLElement).offsetHeight; // Assert type to HTMLElement
         setScrollThresholds([sectionHeight * 0.7, sectionHeight]); // Set thresholds dynamically
       }
     };

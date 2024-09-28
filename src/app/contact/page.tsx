@@ -2,11 +2,11 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { sendEmail } from "./actions";
-import { useState } from "react";
+import { sendContactForm } from "./actions";
 
 // Frontend schema (for form validation)
 const frontendSchema = z.object({
@@ -41,7 +41,7 @@ export default function Contact() {
         message: frontendData.message,
       };
 
-      const data = await sendEmail(backendData);
+      const data = await sendContactForm(backendData);
       if (data.success) {
         reset();
         setIsSuccess(true);

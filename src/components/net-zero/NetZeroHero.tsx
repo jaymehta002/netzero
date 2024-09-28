@@ -50,7 +50,7 @@ const NetZeroHero = () => {
         >
           NETZERO - SOLUTIONS
         </motion.h1>
-        <div className="flex mx-8 justify-between">
+        <div className="flex flex-col md:flex-row gap-2 items-center mx-8 justify-between">
           <motion.p
             className="text-xl md:text-2xl font-normal"
             initial={{ y: 50, opacity: 0 }}

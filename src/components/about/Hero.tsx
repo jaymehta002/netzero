@@ -18,7 +18,7 @@ const Hero = () => {
       >
         <div className="text-3xl md:text-7xl font-bold dark:text-white text-center">
           Your Partner for a{" "}
-          <span className="text-primary text-8xl">Sustainable</span> Future
+          <span className="text-primary text-4xl md:text-8xl">Sustainable</span> Future
         </div>
         <div className="font-extralight text-base md:text-4xl dark:text-neutral-200 py-4">
           Your Partner for a Sustainable Future

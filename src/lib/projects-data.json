@@ -1,0 +1,28 @@
+{
+    "projects": [
+      {
+        "title": "Reforestation Projects",
+        "description": "Plant trees in degraded forests to sequester carbon and restore ecosystems.",
+        "image": "/assets/rainforest.jpg",
+        "url": "/projects/reforestation"
+      },
+      {
+        "title": "Renewable Energy Projects",
+        "description": "Support the development of solar, wind, and other renewable energy sources.",
+        "image": "/assets/rainforest.jpg",
+        "url": "/projects/renewable-energy"
+      },
+      {
+        "title": "Energy Efficiency Projects",
+        "description": "Implement energy-saving measures to reduce emissions and improve efficiency.",
+        "image": "/assets/rainforest.jpg",
+        "url": "/projects/energy-efficiency"
+      },
+      {
+        "title": "Sustainable Agriculture Projects",
+        "description": "Promote sustainable farming practices to reduce deforestation and improve soil health.",
+        "image": "/assets/rainforest.jpg",
+        "url": "/projects/sustainable-agriculture"
+      }
+    ]
+  }

@@ -12,7 +12,7 @@ export default function Component() {
       <Hero />
 
       <div className="flex py-20 flex-col justify-center items-center w-full min-h-screen">
-        <h2 className="text-7xl font-bold mb-12 text-center">Our Story</h2>
+        <h2 className="text-4xl md:text-7xl font-bold mb-12 text-center">Our Story</h2>
         <TextRevealByWord
           className="w-full  h-full max-w-5xl" // Increased width
           text="Terrasols Solutions Private Limited is a pioneering sustainability consultancy committed to driving positive change. With a team of seasoned professionals and a passion for innovation, we offer a comprehensive range of services tailored to meet the unique needs of our clients. Our approach combines cutting-edge technology with sustainable practices, ensuring that our solutions not only meet today's demands but also contribute to a healthier planet for future generations."

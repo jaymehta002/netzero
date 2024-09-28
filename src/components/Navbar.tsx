@@ -12,7 +12,7 @@ const Navbar = () => {
     [0, 100],
     ["rgba(0, 0, 0, 0)", "rgba(255, 255, 255, 0.8)"]
   );
-  const textColor = useTransform(scrollY, [0, 100], ["#ffffff", "#000000"]);
+  const textColor = useTransform(scrollY, [0, 100], ["#e0e0e0", "#333333"]);
   const logoScale = useTransform(scrollY, [0, 100], [1, 0.8]);
   const navItemsY = useTransform(scrollY, [0, 100], [0, -10]);
 

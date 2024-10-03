@@ -1,10 +1,14 @@
-import { MoveUpRight } from "lucide-react";
+import React from "react";
 import BorderButton from "./ui/BorderButton";
+// import Image from 'next/image';
+// import OutDoorSofa from '@/../public/6.jpg';
+import { MoveUpRight } from "lucide-react";
+import BlurFade from "./ui/blur_fade";
 
 export default function Bento() {
   return (
-    <section className=" grid grid-cols-1 lg:grid-cols-12 mt-5 w-full p-4 sm:p-10 gap-5 ">
-      <div className=" relative w-full lg:col-span-8">
+    <section className="grid grid-cols-1 lg:grid-cols-12 mt-5 w-full p-4 sm:p-10 gap-5">
+      <BlurFade className="relative w-full lg:col-span-8">
         <video
           width="100%"
           height="100%"
@@ -13,28 +17,28 @@ export default function Bento() {
           muted
           preload="none"
           style={{ display: "block" }}
-          className=" rounded-3xl border"
+          className="rounded-3xl border shadow-md h-full w-full object-cover "
         >
           <source src="/wildlife.webp" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <div className=" absolute bottom-0  w-[60%] lg:w-[40%] left-0">
-          <div className=" w-[60%] rounded-se-2xl flex items-start bg-white  pt-3 pr-2 lg:pt-3 lg:pr-6">
+        <div className="absolute bottom-0 w-[60%] lg:w-[40%] left-0">
+          <div className="w-[60%] rounded-se-2xl flex items-start bg-stone-100 pt-3 pr-2 lg:pt-3 lg:pr-6">
             <BorderButton
-              text="Wildlife Burning"
-              className=" text-xs"
+              text="Georgeus Interior"
+              className="text-xs"
             ></BorderButton>
           </div>
-          <div className=" text-2xl lg:text-6xl font-semibold w-[80%] rounded-se-2xl flex items-start bg-white  pt-1 pr-2 lg:pt-3 lg:pr-6">
-            56,580
+          <div className="text-2xl lg:text-6xl font-semibold w-[80%] rounded-se-2xl flex items-start bg-stone-100 pt-1 pr-2 lg:pt-3 lg:pr-6">
+            Modern
           </div>
-          <div className=" text-2xl lg:text-6xl font-semibold w-full rounded-se-2xl flex items-start bg-white  pt-1 pr-2 lg:pt-3 lg:pr-6">
+          <div className="text-2xl lg:text-6xl font-semibold w-full rounded-se-2xl flex items-start bg-stone-100 pt-1 pr-2 lg:pt-3 lg:pr-6">
             wildfires
           </div>
         </div>
-      </div>
-      <div className=" md:col-span-4  flex flex-col gap-5 group/cardthree">
-        <div className=" mb-20 relative rounded-3xl h-[45%] p-8">
+      </BlurFade>
+      <div className="md:col-span-4 flex flex-col gap-5 group/cardthree">
+        <div className="mb-20 relative rounded-3xl h-[45%] p-8">
           <video
             width="100%"
             height="100%"
@@ -49,7 +53,7 @@ export default function Bento() {
               left: 0,
               zIndex: -1,
             }}
-            className=" rounded-3xl border"
+            className="rounded-3xl border"
           >
             <source src="/industry.webp" type="video/mp4" />
             Your browser does not support the video tag.
@@ -60,11 +64,11 @@ export default function Bento() {
             className="relative z-10"
           ></BorderButton>
         </div>
-        <div className=" relative rounded-3xl h-[100%]">
-          <div className="  absolute top-5 left-5">
+        <div className="relative rounded-3xl h-[70%]">
+          <div className="absolute top-5 left-5">
             <BorderButton
               text="Oxygenless?"
-              className=" border-white text-white"
+              className="border-white text-white"
             ></BorderButton>
           </div>
           <video
@@ -81,13 +85,13 @@ export default function Bento() {
               left: 0,
               zIndex: -1,
             }}
-            className=" rounded-3xl border"
+            className="rounded-3xl border"
           >
             <source src="/warning.webp" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          <div className=" absolute -bottom-3 -right-3  rounded-full p-3 transition-all duration-200 ease-in-out group-hover/cardthree:-translate-x-2 group-hover/cardthree:-translate-y-2 bg-white z-10 size-16">
-            <MoveUpRight className=" group-hover/cardthree:-rotate-90 bg-black p-2 transition-all duration-200 ease-in-out  text-white size-full rounded-full" />
+          <div className="absolute -bottom-3 -right-3 rounded-full p-3 transition-all duration-200 ease-in-out group-hover/cardthree:-translate-x-2 group-hover/cardthree:-translate-y-2 bg-white z-10 size-16">
+            <MoveUpRight className="group-hover/cardthree:-rotate-90 bg-black p-2 transition-all duration-200 ease-in-out text-white size-full rounded-full" />
           </div>
         </div>
       </div>

@@ -1,8 +1,8 @@
 "use client";
 import Bento from "@/components/Bento";
 import Hero from "@/components/Hero";
+import TextRevealByWord from "@/components/magicui/text-reveal";
 import Services from "@/components/Services";
-import { MaskContainer } from "@/components/ui/svg-mask-effect";
 
 import { useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
@@ -31,23 +31,12 @@ export default function Home() {
       <Hero />
       <script src="https://climateclock.world/widget-v2.js" async></script>
       <climate-clock />
-      <MaskContainer
-        revealText={
-          <p className="max-w-4xl mx-auto text-slate-800 text-center  text-4xl font-bold">
-            <span className="text-primary">Terrasols Solutions</span> Private
-            Limited is a sustainability consulting company dedicated to creating
-            positive changes. We have a team of experienced professionals and a
-            strong focus on innovation.
-          </p>
-        }
-        className="h-[40rem] rounded-md"
-        revealSize={400}
-      >
-        We&apos;re a global team on a mission to make sure that every business
-        has an actionable sustainability programme.
-      </MaskContainer>
-      <Services />
+      <TextRevealByWord
+        text="Terrasols Solutions Private Limited is a sustainability consulting company dedicated to creating positive changes. We have a team of experienced professionals and a strong focus on innovation. We're a global team on a mission to make sure that every business has an actionable sustainability programme."
+        className="text-4xl font-bold"
+      />
       <Bento />
+      <Services />
       {/* <Brochure /> */}
     </div>
   );

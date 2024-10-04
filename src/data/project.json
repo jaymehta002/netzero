@@ -1,0 +1,34 @@
+{
+  "projects": [
+    {
+      "title": "Plantation Project",
+      "description": "Plant trees in degraded forests to sequester carbon and restore ecosystems.",
+      "image": "/assets/plantation.jpg"
+    },
+    {
+      "title": "Sustainable Farming",
+      "description": "Implement sustainable agricultural practices that enhance soil health and biodiversity.",
+      "image": "/assets/farming.jpg"
+    },
+    {
+      "title": "21M Solar",
+      "description": "Develop and deploy solar energy solutions to reduce carbon footprint and promote renewable energy.",
+      "image": "/assets/solar.jpg"
+    },
+    {
+      "title": "30MV CO-generation",
+      "description": "Utilize co-generation technology to improve energy efficiency and reduce emissions in farming.",
+      "image": "/assets/co-generation.jpg"
+    },
+    {
+      "title": "Bamboo Project",
+      "description": "Cultivate bamboo as a sustainable resource for construction and environmental restoration.",
+      "image": "/assets/bamboo.jpg"
+    },
+    {
+      "title": "Plastic Recycling",
+      "description": "Promote sustainable farming practices to reduce deforestation and improve soil health.",
+      "image": "/assets/plastic.jpg"
+    }
+  ]
+}

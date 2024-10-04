@@ -1,142 +1,129 @@
-import React, { useEffect, useRef } from "react";
-import { Leaf, BarChart, Zap, Sprout, LucideIcon } from "lucide-react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React from "react";
+import {
+  Leaf,
+  BarChart,
+  Users,
+  TrendingUp,
+  ClipboardCheck,
+  CheckCircle,
+  BookOpen,
+  FileText,
+  Globe,
+} from "lucide-react"; // Importing relevant Lucide icons
 
-gsap.registerPlugin(ScrollTrigger);
-
-interface Benefit {
+interface Feature {
   title: string;
   description: string;
-  icon: LucideIcon;
-  color: string;
+  icon: React.ReactNode; // Added icon prop for dynamic icons
 }
 
-const benefits: Benefit[] = [
+const features: Feature[] = [
   {
-    title: "Environmental Impact",
+    title: "Sustainability Solutions",
     description:
-      "Reduce your carbon footprint and contribute to a cleaner, healthier planet.",
-    icon: Leaf,
-    color: "emerald",
+      "Providing innovative tools to help you achieve long-term sustainability goals while reducing carbon footprints.",
+    icon: <Leaf className="w-8 h-8 text-green-500" />,
   },
   {
-    title: "Regulatory Compliance",
+    title: "Carbon Credit Generation",
     description:
-      "Meet your carbon emissions reduction targets and avoid penalties.",
-    icon: BarChart,
-    color: "blue",
+      "Helping businesses generate and manage carbon credits to promote eco-friendly initiatives and reduce their overall environmental impact.",
+    icon: <BarChart className="w-8 h-8 text-blue-500" />,
   },
   {
-    title: "Enhanced Reputation",
+    title: "Collaboration Platforms",
     description:
-      "Demonstrate your commitment to sustainability and corporate social responsibility.",
-    icon: Zap,
-    color: "purple",
+      "Foster seamless collaboration among teams to work on impactful sustainability projects and ideas.",
+    icon: <Users className="w-8 h-8 text-indigo-500" />,
   },
   {
-    title: "Financial Returns",
+    title: "Accurate Data & Reporting",
     description:
-      "Generate potential financial returns through carbon credit trading.",
-    icon: Sprout,
-    color: "green",
+      "Leverage our platform to gain precise insights and reports that will help track, manage, and optimize carbon emissions.",
+    icon: <TrendingUp className="w-8 h-8 text-yellow-500" />,
+  },
+  {
+    title: "Project Ideation & Innovation",
+    description:
+      "From ideation to execution, transform your sustainability projects with the latest strategies and expert guidance.",
+    icon: <ClipboardCheck className="w-8 h-8 text-red-500" />,
+  },
+  {
+    title: "Compliance & Documentation",
+    description:
+      "Easily manage the documentation required for sustainability reporting and ensure your projects stay compliant with regulations.",
+    icon: <FileText className="w-8 h-8 text-purple-500" />,
+  },
+  {
+    title: "Green Building Rating",
+    description:
+      "Assisting companies in achieving eco-friendly certifications for sustainable building practices.",
+    icon: <CheckCircle className="w-8 h-8 text-teal-500" />,
+  },
+  {
+    title: "Training and Education",
+    description:
+      "Access to expert knowledge and training to boost sustainability practices in your community.",
+    icon: <BookOpen className="w-8 h-8 text-orange-500" />,
+  },
+  {
+    title: "Global Policy & Climate Risk",
+    description:
+      "Guiding companies through policy compliance and assessing climate risk management strategies.",
+    icon: <Globe className="w-8 h-8 text-pink-500" />,
   },
 ];
 
-const BenefitCard: React.FC<{ benefit: Benefit }> = ({ benefit }) => {
+const FeatureCard: React.FC<{ feature: Feature }> = ({ feature }) => {
   return (
-    <div
-      className={`w-full h-full bg-white rounded-lg shadow-xl p-4 sm:p-6 flex flex-col items-center justify-center transition-all duration-300 hover:shadow-2xl`}
-    >
-      <benefit.icon
-        className={`w-12 h-12 sm:w-16 sm:h-16 mb-2 sm:mb-4 text-${benefit.color}-500`}
-      />
-      <h3
-        className={`text-lg sm:text-xl font-bold mb-1 sm:mb-2 text-${benefit.color}-700 text-center`}
-      >
-        {benefit.title}
-      </h3>
-      <p className="text-xs sm:text-sm text-gray-600 text-center">
-        {benefit.description}
-      </p>
-    </div>
-  );
-};
-
-const ResponsiveBenefitsCarousel: React.FC = () => {
-  const carouselRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
-
-  useEffect(() => {
-    const cards = cardsRef.current.filter(
-      (card): card is HTMLDivElement => card !== null
-    );
-
-    if (cards.length === benefits.length) {
-      const animateCards = () => {
-        const isMobile = window.innerWidth < 640;
-        const isTablet = window.innerWidth >= 640 && window.innerWidth < 1024;
-
-        gsap.set(cards, { x: 0, y: 0, opacity: 1 });
-
-        ScrollTrigger.create({
-          trigger: carouselRef.current,
-          start: isMobile ? "top top" : "top center",
-          end: isMobile ? "bottom top" : "bottom center",
-          scrub: true,
-          onUpdate: (self) => {
-            const progress = self.progress;
-            if (isMobile) {
-              gsap.to(cards[0], { x: -100 * progress, opacity: 1 - progress });
-              gsap.to(cards[1], { x: -50 * progress, opacity: 1 - progress });
-              gsap.to(cards[2], { x: 50 * progress, opacity: 1 - progress });
-              gsap.to(cards[3], { x: 100 * progress, opacity: 1 - progress });
-            } else if (isTablet) {
-              gsap.to(cards[0], { x: -150 * progress, opacity: 1 - progress });
-              gsap.to(cards[1], { x: -75 * progress, opacity: 1 - progress });
-              gsap.to(cards[2], { x: 75 * progress, opacity: 1 - progress });
-              gsap.to(cards[3], { x: 150 * progress, opacity: 1 - progress });
-            } else {
-              gsap.to(cards[0], { x: -150 * progress, opacity: 1 - progress });
-              gsap.to(cards[1], { x: -150 * progress, opacity: 1 - progress });
-              gsap.to(cards[2], { x: 150 * progress, opacity: 1 - progress });
-              gsap.to(cards[3], { x: 150 * progress, opacity: 1 - progress });
-            }
-          },
-        });
-      };
-
-      animateCards();
-      window.addEventListener("resize", animateCards);
-
-      return () => {
-        window.removeEventListener("resize", animateCards);
-      };
-    }
-  }, []);
-
-  return (
-    <div className="w-full min-h-screen overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
-      <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-10 text-gray-800 text-center">
-        Benefits of Carbon Credit Trading
-      </h2>
-      <div
-        ref={carouselRef}
-        className="w-full max-w-7xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8"
-      >
-        {benefits.map((benefit, index) => (
-          <div
-            key={index}
-            ref={(el) => {
-              cardsRef.current[index] = el;
-            }}
-          >
-            <BenefitCard benefit={benefit} />
-          </div>
-        ))}
+    <div className="relative flex flex-col items-start p-6 bg-white rounded-lg shadow-lg transform hover:-translate-y-2 transition duration-300 ease-in-out hover:shadow-2xl">
+      <div className="absolute top-0 left-0 transform -translate-y-1/2 translate-x-1/2 bg-indigo-100 rounded-full p-4">
+        {feature.icon}
       </div>
+      <h3 className="text-xl font-semibold text-gray-900 mt-10">
+        {feature.title}
+      </h3>
+      <p className="mt-4 text-sm text-gray-600">{feature.description}</p>
     </div>
   );
 };
 
-export default ResponsiveBenefitsCarousel;
+const FeaturesSection: React.FC = () => {
+  return (
+    <section className="relative w-full py-16 bg-green-100">
+      {/* Wave background effect */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <svg
+          className="absolute bottom-0 w-full h-40 fill-current text-white"
+          viewBox="0 0 1440 320"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,160L60,154.7C120,149,240,139,360,154.7C480,171,600,213,720,213.3C840,213,960,171,1080,133.3C1200,96,1320,64,1380,48L1440,32L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
+            fill="#ffffff"
+          ></path>
+        </svg>
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-extrabold text-gray-900 leading-snug mb-6">
+            Innovating for a Sustainable Future
+          </h2>
+          <p className="text-xl text-gray-700 mb-8">
+            Empowering businesses and communities with tools to reduce carbon
+            footprints, promote sustainability, and collaborate for a greener
+            future.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map((feature, index) => (
+            <FeatureCard key={index} feature={feature} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default FeaturesSection;

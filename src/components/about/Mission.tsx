@@ -85,15 +85,15 @@ const Mission = () => {
             </button>
           </div>
           <div className="w-full lg:justify-start justify-center items-start flex">
-            <div className="sm:w-[564px] w-full sm:h-[646px] h-full sm:bg-gray-100 rounded-3xl sm:border border-gray-200 relative">
-              <Image
-                className="sm:mt-5 sm:ml-5 w-full h-full rounded-3xl object-cover"
-                src="/images/about/mission.png"
-                alt="about Us image"
-                width={564}
-                height={646}
-              />
-            </div>
+            {/* <div className="sm:w-[564px] w-full sm:h-[646px] h-full sm:bg-gray-100 rounded-3xl sm:border border-gray-200 relative"> */}
+            <Image
+              className="sm:mt-5 sm:ml-5  rounded-3xl "
+              src="/about.png"
+              alt="about Us image"
+              width={800}
+              height={800}
+            />
+            {/* </div> */}
           </div>
         </div>
       </div>

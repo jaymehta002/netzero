@@ -1,6 +1,5 @@
-import React from "react";
 import { motion } from "framer-motion";
-import { Zap, Users, Globe } from "lucide-react";
+import { DirectionAwareHover } from "../ui/direction-aware-hover";
 
 // Animation variants
 const fadeIn = {
@@ -38,22 +37,21 @@ const Expertise = () => {
         >
           {[
             {
-              title: "AI & Machine Learning",
-              icon: Zap,
+              title: "Sustainable Energy Solutions",
+              image: "/assets/sustainablity.webp",
               description:
-                "Harnessing the power of artificial intelligence to create smart, adaptive solutions.",
+                "Developing innovative energy solutions that minimize environmental impact.",
             },
             {
-              title: "UX/UI Design",
-              icon: Users,
-              description:
-                "Crafting intuitive and engaging user experiences that delight and inspire.",
+              title: "Eco-Friendly Product Design",
+              image: "/assets/carbon-credit.webp",
+              description: "Easy carbon credit generation and verification.",
             },
             {
-              title: "Cloud Solutions",
-              icon: Globe,
+              title: "Green Building Practices",
+              image: "/assets/green-building.webp",
               description:
-                "Building scalable, secure, and efficient cloud infrastructures for modern businesses.",
+                "Implementing sustainable construction methods for a better future.",
             },
           ].map((expertise, index) => (
             <motion.div
@@ -61,9 +59,13 @@ const Expertise = () => {
               className="bg-gradient-to-br from-gray-50 to-gray-100 p-6 rounded-lg shadow-md"
               variants={fadeIn}
             >
-              <expertise.icon size={48} className="mb-4 text-primary" />
+              <DirectionAwareHover imageUrl={expertise?.image}>
+                <p className="font-bold text-xl">{expertise.title}</p>
+                <p className="font-normal text-sm">{expertise.description}</p>
+              </DirectionAwareHover>
+              {/* <expertise.icon size={48} className="mb-4 text-primary" />
               <h3 className="text-xl font-semibold mb-2">{expertise.title}</h3>
-              <p>{expertise.description}</p>
+              <p>{expertise.description}</p> */}
             </motion.div>
           ))}
         </motion.div>

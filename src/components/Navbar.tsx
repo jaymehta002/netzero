@@ -2,11 +2,13 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLightBg, setIsLightBg] = useState(true); // State to track if background is light
   const { scrollY } = useScroll();
+
   const backgroundColor = useTransform(
     scrollY,
     [0, 100],
@@ -25,6 +27,33 @@ const Navbar = () => {
   };
 
   const navItems = ["Home", "About", "Net Zero", "Projects", "Contact"];
+
+  // Check background color and update state
+  useEffect(() => {
+    const checkBackground = () => {
+      const bodyBgColor = window.getComputedStyle(
+        document.body
+      ).backgroundColor;
+      const rgb = bodyBgColor.match(/\d+/g); // Extract RGB values
+
+      if (rgb) {
+        const brightness = Math.round(
+          (parseInt(rgb[0]) * 299 +
+            parseInt(rgb[1]) * 587 +
+            parseInt(rgb[2]) * 114) /
+            1000
+        );
+        setIsLightBg(brightness > 150); // If brightness is high, it's light background
+      }
+    };
+
+    checkBackground(); // Call on component mount
+    window.addEventListener("resize", checkBackground); // Re-check on window resize
+
+    return () => {
+      window.removeEventListener("resize", checkBackground);
+    };
+  }, []);
 
   return (
     <motion.header className="fixed w-full z-50" style={{ backgroundColor }}>
@@ -52,7 +81,7 @@ const Navbar = () => {
                       : `/${item.toLowerCase().replace(" ", "-")}`
                   }
                   className="text-lg font-medium hover:text-primary transition-colors"
-                  style={{ color: textColor.get() }}
+                  style={{ color: isLightBg ? "#000000" : "#ffffff" }}
                 >
                   {item}
                 </Link>
@@ -108,6 +137,7 @@ const Navbar = () => {
                 }
                 className="text-4xl  uppercase  font-medium text-gray-800 hover:text-primary transition-colors"
                 onClick={closeMenu}
+                style={{ color: isLightBg ? "#000000" : "#ffffff" }}
               >
                 {item}
               </Link>

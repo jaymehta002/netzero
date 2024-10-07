@@ -16,7 +16,6 @@ const Navbar = () => {
   );
   const textColor = useTransform(scrollY, [0, 100], ["#ffffff", "#000000"]);
   const logoScale = useTransform(scrollY, [0, 100], [1, 0.8]);
-  const navItemsY = useTransform(scrollY, [0, 100], [0, -10]);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
@@ -58,15 +57,16 @@ const Navbar = () => {
   return (
     <motion.header className="fixed w-full z-50" style={{ backgroundColor }}>
       <div className="container mx-auto px-4 py-4 md:py-6">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center h-full">
+          {" "}
           <motion.div style={{ scale: logoScale }}>
             <Link href="/" className="text-2xl font-bold">
               <Image src="/logo.svg" alt="Terrasols" width={150} height={50} />
             </Link>
           </motion.div>
           <motion.nav
-            className="hidden md:flex space-x-6"
-            style={{ y: navItemsY }}
+            className="hidden md:flex items-center space-x-6 h-full"
+            // style={{ y: navItemsY }}
           >
             {navItems.map((item) => (
               <motion.div

@@ -8,7 +8,7 @@ export default function CarbonCredits() {
     <div>
       <ProjectHero />
 
-      <BenefitsCarousel />
+      {/* <BenefitsCarousel /> */}
 
       {/* <Timeline /> */}
 

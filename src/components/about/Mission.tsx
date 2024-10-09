@@ -77,9 +77,9 @@ const Mission = () => {
                 <path
                   d="M6.75265 4.49658L11.2528 8.99677L6.75 13.4996"
                   stroke="#088F8F"
-                  stroke-width="1.6"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </button>

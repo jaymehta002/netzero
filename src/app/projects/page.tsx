@@ -1,5 +1,5 @@
 "use client";
-import BenefitsCarousel from "@/components/projects/BenefitsCarousel";
+
 import ProjectHero from "@/components/projects/ProjectHero";
 import ProjectPortfolio from "@/components/projects/ProjectPortfolio";
 

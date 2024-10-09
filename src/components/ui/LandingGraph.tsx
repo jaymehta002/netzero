@@ -184,7 +184,7 @@ const LandingGraph = () => {
           <p className="text-gray-300 mb-8 text-lg">
             Our innovative solutions help businesses dramatically reduce their
             carbon emissions over time. Unlike the traditional approach, which
-            often leads to increased emissions, Terrasols' strategies result in
+            often leads to increased emissions, Terrasols&apos; strategies result in
             a consistent downward trend in your carbon footprint.
           </p>
           <motion.div

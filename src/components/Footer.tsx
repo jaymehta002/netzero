@@ -101,10 +101,10 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="border-t border-green-800 mt-12 pt-6 text-center md:flex md:justify-between text-sm text-green-300">
           <p>
-            © 2023 Terrasols Solutions Private Limited. All rights reserved.
+            © 2024 Terrasols Solutions Private Limited. All rights reserved.
           </p>
           <Link
-            href="/privacy"
+            href="/privacy-policy"
             className="hover:text-green-400 transition duration-300 mt-2 md:mt-0"
           >
             Privacy Policy

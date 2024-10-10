@@ -43,7 +43,7 @@ const Steps = () => {
         initial={{ scale: 0 }}
         whileInView={{ scale: 1.2 }}
         transition={{ duration: 0.6, type: "linear" }}
-        className="text-8xl font-bold mb-20 text-center text-emerald-600"
+        className="md:text-6xl text-3xl font-bold mb-20 text-center text-emerald-600"
       >
         Our Net Zero Process
       </motion.h2>

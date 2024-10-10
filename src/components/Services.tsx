@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowRight, BarChart2, Globe, Leaf } from "lucide-react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle, ArrowRight, Leaf, BarChart2, Globe } from "lucide-react";
+import React, { useState } from "react";
 
 const ServiceCard = ({
   title,
@@ -84,14 +84,6 @@ export default function Services() {
       transition: {
         staggerChildren: 0.3,
       },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
     },
   };
 
@@ -196,37 +188,6 @@ export default function Services() {
             </div>
           </motion.div>
         </div>
-
-        <motion.div
-          className="mt-24 bg-white p-8 rounded-xl shadow-xl"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <h3 className="text-2xl font-bold mb-6 text-center">
-            Why Choose Our Platform?
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              "Real-time data analytics",
-              "Customizable reporting",
-              "Compliance with global standards",
-              "User-friendly interface",
-              "Integration with existing systems",
-              "Expert support team",
-            ].map((feature, index) => (
-              <motion.div
-                key={index}
-                className="flex items-center"
-                variants={itemVariants}
-                whileHover={{ scale: 1.05 }}
-              >
-                <CheckCircle className="h-6 w-6 text-[#04773b] mr-3 flex-shrink-0" />
-                <span>{feature}</span>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </div>
   );

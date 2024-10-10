@@ -61,38 +61,64 @@ export default function Contact() {
           <div className="space-y-8">
             <h1 className="text-4xl font-bold text-green-800">Contact Us</h1>
             <p className="text-gray-600">
-              Email, call, or complete the form to learn how Eco-Friendly can solve your sustainability challenges.
+              Email, call, or complete the form to learn how Terrasols can solve
+              your sustainability challenges.
             </p>
             <div className="space-y-2">
-              <p className="text-gray-600">info@eco-friendly.com</p>
-              <p className="text-gray-600">123-456-7890</p>
+              <p className="text-gray-600">info@terrasols.earth</p>
+              <p className="text-gray-600">+91 87893 74657</p>
             </div>
             <div className="space-y-4">
-              <h2 className="text-xl font-semibold text-green-700">Customer Support</h2>
+              <h2 className="text-xl font-semibold text-green-700">
+                Customer Support
+              </h2>
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <h3 className="font-medium text-green-600">Customer Support</h3>
-                  <p className="text-sm text-gray-600">Our support team is available to assist with any questions or issues you may have.</p>
+                  <h3 className="font-medium text-green-600">
+                    Customer Support
+                  </h3>
+                  <p className="text-sm text-gray-600">
+                    Our support team is available to assist with any questions
+                    or issues you may have.
+                  </p>
                 </div>
                 <div>
-                  <h3 className="font-medium text-green-600">Feedback and Suggestions</h3>
-                  <p className="text-sm text-gray-600">We&apos;re always looking to improve our services. Your feedback is valuable to us.</p>
+                  <h3 className="font-medium text-green-600">
+                    Feedback and Suggestions
+                  </h3>
+                  <p className="text-sm text-gray-600">
+                    We&apos;re always looking to improve our services. Your
+                    feedback is valuable to us.
+                  </p>
                 </div>
                 <div>
-                  <h3 className="font-medium text-green-600">Media Inquiries</h3>
-                  <p className="text-sm text-gray-600">For press-related questions, please contact us at media@eco-friendly.com.</p>
+                  <h3 className="font-medium text-green-600">
+                    Media Inquiries
+                  </h3>
+                  <p className="text-sm text-gray-600">
+                    For press-related questions, please contact us at
+                    media@eco-friendly.com.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="bg-white p-8 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-semibold text-green-800 mb-6">Get in Touch</h2>
+            <h2 className="text-2xl font-semibold text-green-800 mb-6">
+              Get in Touch
+            </h2>
             <p className="text-gray-600 mb-6">You can reach us anytime</p>
             {isSuccess && (
-              <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+              <div
+                className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4"
+                role="alert"
+              >
                 <strong className="font-bold">Success!</strong>
-                <span className="block sm:inline"> Your message has been sent. We&apos;ll get back to you soon.</span>
+                <span className="block sm:inline">
+                  {" "}
+                  Your message has been sent. We&apos;ll get back to you soon.
+                </span>
               </div>
             )}
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -103,7 +129,11 @@ export default function Contact() {
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent"
                     placeholder="First name"
                   />
-                  {errors.firstName && <p className="mt-1 text-sm text-red-600">{errors.firstName.message}</p>}
+                  {errors.firstName && (
+                    <p className="mt-1 text-sm text-red-600">
+                      {errors.firstName.message}
+                    </p>
+                  )}
                 </div>
                 <div>
                   <Input
@@ -111,7 +141,11 @@ export default function Contact() {
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent"
                     placeholder="Last name"
                   />
-                  {errors.lastName && <p className="mt-1 text-sm text-red-600">{errors.lastName.message}</p>}
+                  {errors.lastName && (
+                    <p className="mt-1 text-sm text-red-600">
+                      {errors.lastName.message}
+                    </p>
+                  )}
                 </div>
               </div>
               <div>
@@ -121,7 +155,11 @@ export default function Contact() {
                   placeholder="Your email"
                   type="email"
                 />
-                {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>}
+                {errors.email && (
+                  <p className="mt-1 text-sm text-red-600">
+                    {errors.email.message}
+                  </p>
+                )}
               </div>
               <div>
                 <Input
@@ -130,7 +168,11 @@ export default function Contact() {
                   placeholder="Phone number"
                   type="tel"
                 />
-                {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone.message}</p>}
+                {errors.phone && (
+                  <p className="mt-1 text-sm text-red-600">
+                    {errors.phone.message}
+                  </p>
+                )}
               </div>
               <div>
                 <textarea
@@ -139,12 +181,24 @@ export default function Contact() {
                   placeholder="How can we help?"
                   rows={4}
                 ></textarea>
-                {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>}
+                {errors.message && (
+                  <p className="mt-1 text-sm text-red-600">
+                    {errors.message.message}
+                  </p>
+                )}
               </div>
               <div className="flex items-center">
                 <input type="checkbox" id="terms" className="mr-2" required />
                 <label htmlFor="terms" className="text-sm text-gray-600">
-                  By continuing you agree to our <a href="#" className="text-blue-600 hover:underline">Terms of Service</a> and <a href="#" className="text-blue-600 hover:underline">Privacy Policy</a>.
+                  By continuing you agree to our{" "}
+                  <a href="#" className="text-blue-600 hover:underline">
+                    Terms of Service
+                  </a>{" "}
+                  and{" "}
+                  <a href="#" className="text-blue-600 hover:underline">
+                    Privacy Policy
+                  </a>
+                  .
                 </label>
               </div>
               <Button

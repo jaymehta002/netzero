@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import TextRevealByWord from "@/components/magicui/text-reveal";
 import Services from "@/components/Services";
 import LandingGraph from "@/components/ui/LandingGraph";
+import WhyChooseUs from "@/components/WhyChooseUs";
 
 import { useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
@@ -37,6 +38,7 @@ export default function Home() {
       />
       <Services />
       <LandingGraph />
+      <WhyChooseUs />
       {/* <climate-clock /> */}
       <Bento />
       {/* <div className="flex justify-center items-center bg-secondary">

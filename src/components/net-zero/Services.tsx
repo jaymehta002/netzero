@@ -1,11 +1,9 @@
-"use client"
-import React, { useState, useId, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+"use client";
+import React, { useState, useId, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChevronDown } from "lucide-react";
-
-
 
 interface Category {
   category: string;
@@ -130,9 +128,11 @@ export default function ExpandableServicesSection() {
   }, []);
 
   return (
-    <div className="container mx-auto px-4 py-8 mt-16"> {/* Added mt-16 for top margin */}
+    <div className="container h-[80vh] mx-auto px-4 py-8 mt-16">
+      {" "}
+      {/* Added mt-16 for top margin */}
       <motion.h2
-        className="text-3xl font-bold text-center mb-8 text-primary"
+        className="text-3xl font-bold text-center mb-8 text-secondary"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -165,7 +165,7 @@ export default function ExpandableServicesSection() {
           >
             <Card className="h-full hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors duration-300">
               <CardHeader>
-                <CardTitle className="text-primary flex justify-between items-center">
+                <CardTitle className="text-secondary flex justify-between items-center">
                   {category.category}
                   <ChevronDown className="h-4 w-4" />
                 </CardTitle>

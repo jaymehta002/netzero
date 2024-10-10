@@ -23,16 +23,13 @@ export default function Bento() {
         </video>
         <div className="absolute bottom-0 w-[80%] sm:w-[70%] md:w-[60%] lg:w-[50%] left-0">
           <div className="w-[60%] rounded-se-xl sm:rounded-se-2xl flex items-start bg-stone-100 pt-2 pr-2 sm:pt-3 sm:pr-4 lg:pt-3 lg:pr-6">
-            <BorderButton
-              text="Gorgeous Interior"
-              className="text-xs sm:text-sm"
-            />
+            <BorderButton text="Temprature" className="text-xs sm:text-sm" />
           </div>
           <div className="text-xl sm:text-3xl md:text-4xl lg:text-6xl font-semibold w-[80%] rounded-se-xl sm:rounded-se-2xl flex items-start bg-stone-100 pt-1 pr-2 sm:pt-2 sm:pr-4 lg:pt-3 lg:pr-6">
-            Modern
+            2.5 Lakhs
           </div>
           <div className="text-xl sm:text-3xl md:text-4xl lg:text-6xl font-semibold w-full rounded-se-xl sm:rounded-se-2xl flex items-start bg-stone-100 pt-1 pr-2 sm:pt-2 sm:pr-4 lg:pt-3 lg:pr-6">
-            wildfires
+            Wildlife fires
           </div>
         </div>
       </BlurFade>

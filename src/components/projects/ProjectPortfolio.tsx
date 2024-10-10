@@ -10,7 +10,7 @@ const ProjectPortfolio = () => {
         Our Project Portfolio
       </h2>
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
           {projects.map((project, index) => (
             <motion.div
               key={index}

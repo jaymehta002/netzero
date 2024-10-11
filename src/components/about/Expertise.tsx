@@ -66,28 +66,53 @@ const Expertise = () => {
         ))}
       </motion.div>
 
-      {/* Satellite animation */}
-      <motion.div
-        className="absolute z-10"
-        initial={{ x: "-100%", y: "100%" }}
-        animate={{ x: "200%", y: "-100%" }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-      >
-        <Satellite />
-      </motion.div>
-
       <div className="container mx-auto px-6 lg:px-8 relative z-10">
-        <motion.h2
-          className="text-6xl font-extrabold mb-16 text-center text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600"
-          variants={fadeIn}
+        {/* <motion.div
+          className="absolute z-10"
+          style={
+            {
+              // top: "50%",
+              // left: "33%",
+              // marginTop: "-250px",
+              // marginLeft: "-250px",
+            }
+          }
+          animate={{
+            rotate: 360,
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear",
+          }}
         >
-          Our Expertise
-        </motion.h2>
-
+          <motion.div
+            animate={{}}
+            transition={
+              {
+                // duration: 20,
+                // repeat: Infinity,
+                // ease: "linear",
+              }
+            }
+          >
+            <Satellite />
+          </motion.div>
+        </motion.div> */}
+        {/* <motion.div className="" variants={fadeIn}> */}
+        <div className="flex items-center justify-center mb-8">
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          >
+            <Satellite />
+          </motion.div>
+          {/* Moved Satellite component here */}
+          <h3 className="text-6xl  font-extrabold  text-center text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-green-800">
+            ur Expertise
+          </h3>
+        </div>
+        {/* </motion.div> */}
         {/* Expertise Cards Grid */}
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12"

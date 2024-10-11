@@ -7,6 +7,19 @@ import { useSpring, animated } from "react-spring";
 const NetZeroHero = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const controls = useAnimation();
+  const [windowDimensions, setWindowDimensions] = useState({ width: 0, height: 0 });
+
+  useEffect(() => {
+    // Set window dimensions on mount
+    const handleResize = () => {
+      setWindowDimensions({ width: window.innerWidth, height: window.innerHeight });
+    };
+
+    handleResize(); // Set initial dimensions
+    window.addEventListener('resize', handleResize);
+    
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     if (imageLoaded) {
@@ -30,8 +43,8 @@ const NetZeroHero = () => {
             key={index}
             className="absolute"
             initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
+              x: Math.random() * windowDimensions.width,
+              y: Math.random() * windowDimensions.height,
               scale: Math.random() * 0.5 + 0.5,
             }}
             animate={{

@@ -34,7 +34,7 @@ export default function Home() {
       <script src="https://climateclock.world/widget-v2.js" async></script>
       <TextRevealByWord
         text="Terrasols Solutions Private Limited is a sustainability consulting company dedicated to creating positive changes. We have a team of experienced professionals and a strong focus on innovation. We're a global team on a mission to make sure that every business has an actionable sustainability programme."
-        className="text-4xl font-bold"
+        className="text-2xl font-bold"
       />
       <Services />
       <LandingGraph />

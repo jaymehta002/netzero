@@ -44,7 +44,7 @@ const WhyChooseUs = () => {
         </motion.div>
 
         <motion.div
-          className="bg-white p-8 rounded-xl shadow-xl"
+          className="bg-white p-8 rounded-xl shadow-xl flex flex-col items-center "
           whileInView={{ opacity: 1, scale: 1 }}
           initial={{ opacity: 0, scale: 0.8 }}
           transition={{ duration: 0.6 }}
@@ -54,7 +54,7 @@ const WhyChooseUs = () => {
             Additional Benefits
           </h4>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-content-between  gap-4">
             {[
               "Customizable reporting",
               "Compliance with global standards",
@@ -68,7 +68,7 @@ const WhyChooseUs = () => {
             ].map((benefit, index) => (
               <motion.div
                 key={index}
-                className="flex items-center"
+                className="flex items-center "
                 whileInView={{ opacity: 1, x: 0 }}
                 initial={{ opacity: 0, x: -20 }}
                 transition={{ delay: index * 0.1 }}

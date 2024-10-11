@@ -1,76 +1,68 @@
-import React, { useEffect } from "react";
-import { motion, useAnimation } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
-const BackgroundAnimation = () => {
+const WaveAnimation = () => {
   return (
-    <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute bottom-0 left-0 w-full overflow-hidden">
       <svg
-        className="absolute w-full h-full"
         xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1440 320"
+        preserveAspectRatio="none"
+        className="w-full h-auto"
       >
-        <defs>
-          <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#4CAF50" stopOpacity="0.1">
-              <animate
-                attributeName="stopColor"
-                values="#4CAF50;#81C784;#4CAF50"
-                dur="10s"
-                repeatCount="indefinite"
-              />
-            </stop>
-            <stop offset="100%" stopColor="#4CAF50" stopOpacity="0.3">
-              <animate
-                attributeName="stopColor"
-                values="#4CAF50;#66BB6A;#4CAF50"
-                dur="10s"
-                repeatCount="indefinite"
-              />
-            </stop>
-          </linearGradient>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#grad1)">
+        <path
+          fill="#4CAF50"
+          fillOpacity="0.7"
+          d="M0,96L48,112C96,128,192,160,288,170.7C384,181,480,171,576,144C672,117,768,75,864,80C960,85,1056,139,1152,154.7C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+        >
           <animate
-            attributeName="opacity"
-            values="0.3;0.1;0.3"
-            dur="5s"
+            attributeName="d"
+            dur="10s"
             repeatCount="indefinite"
+            values="
+              M0,96L48,112C96,128,192,160,288,170.7C384,181,480,171,576,144C672,117,768,75,864,80C960,85,1056,139,1152,154.7C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z;
+              M0,64L48,80C96,96,192,128,288,144C384,160,480,160,576,144C672,128,768,96,864,101.3C960,107,1056,149,1152,160C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z;
+              M0,96L48,112C96,128,192,160,288,170.7C384,181,480,171,576,144C672,117,768,75,864,80C960,85,1056,139,1152,154.7C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
           />
-        </rect>
-        {[...Array(5)].map((_, index) => (
-          <motion.circle
-            key={index}
-            cx={`${Math.random() * 100}%`}
-            cy={`${Math.random() * 100}%`}
-            r={`${Math.random() * 5 + 2}%`}
-            fill="#4CAF50"
-            opacity={Math.random() * 0.2}
-            animate={{
-              cx: [`${Math.random() * 100}%`, `${Math.random() * 100}%`],
-              cy: [`${Math.random() * 100}%`, `${Math.random() * 100}%`],
-              scale: [1, 1.5, 1],
-            }}
-            transition={{
-              duration: Math.random() * 20 + 10,
-              repeat: Infinity,
-              repeatType: "reverse",
-              ease: "easeInOut",
-            }}
+        </path>
+        <path
+          fill="#66BB6A"
+          fillOpacity="0.5"
+          d="M0,192L48,181.3C96,171,192,149,288,154.7C384,160,480,192,576,192C672,192,768,160,864,144C960,128,1056,128,1152,138.7C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+        >
+          <animate
+            attributeName="d"
+            dur="8s"
+            repeatCount="indefinite"
+            values="
+              M0,192L48,181.3C96,171,192,149,288,154.7C384,160,480,192,576,192C672,192,768,160,864,144C960,128,1056,128,1152,138.7C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z;
+              M0,160L48,170.7C96,181,192,203,288,213.3C384,224,480,224,576,213.3C672,203,768,181,864,181.3C960,181,1056,203,1152,208C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z;
+              M0,192L48,181.3C96,171,192,149,288,154.7C384,160,480,192,576,192C672,192,768,160,864,144C960,128,1056,128,1152,138.7C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
           />
-        ))}
+        </path>
+        <path
+          fill="#81C784"
+          fillOpacity="0.3"
+          d="M0,256L48,240C96,224,192,192,288,181.3C384,171,480,181,576,192C672,203,768,213,864,208C960,203,1056,181,1152,170.7C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+        >
+          <animate
+            attributeName="d"
+            dur="12s"
+            repeatCount="indefinite"
+            values="
+              M0,256L48,240C96,224,192,192,288,181.3C384,171,480,181,576,192C672,203,768,213,864,208C960,203,1056,181,1152,170.7C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z;
+              M0,224L48,218.7C96,213,192,203,288,197.3C384,192,480,192,576,192C672,192,768,192,864,202.7C960,213,1056,235,1152,240C1248,245,1344,235,1392,229.3L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z;
+              M0,256L48,240C96,224,192,192,288,181.3C384,171,480,181,576,192C672,203,768,213,864,208C960,203,1056,181,1152,170.7C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+          />
+        </path>
       </svg>
     </div>
   );
 };
 
 const HeroSection = () => {
-  const controls = useAnimation();
-
-  useEffect(() => {
-    controls.start("visible");
-  }, [controls]);
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -110,16 +102,16 @@ const HeroSection = () => {
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gray-100">
-      <BackgroundAnimation />
+      <WaveAnimation />
 
       <motion.div
         className="relative z-10 container mx-auto px-6 flex flex-col items-center text-center"
         variants={containerVariants}
         initial="hidden"
-        animate={controls}
+        animate="visible"
       >
         <motion.h1
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight text-gray-800"
+          className="text-4xl md:text-6xl font-bold mb-4 sm:mb-6 leading-tight text-gray-800"
           variants={itemVariants}
         >
           {["Driving", "Sustainable", "Change"].map((word, index) => (
@@ -171,39 +163,6 @@ const HeroSection = () => {
               />
             </motion.span>
           </Link>
-        </motion.div>
-      </motion.div>
-
-      <motion.div
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.5, duration: 0.8 }}
-      >
-        <motion.div
-          className="w-6 h-10 border-2 border-green-500 rounded-full p-1"
-          animate={{
-            y: [0, 8, 0],
-          }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-            repeatType: "loop",
-            ease: "easeInOut",
-          }}
-        >
-          <motion.div
-            className="w-1 h-2 bg-green-500 rounded-full mx-auto"
-            animate={{
-              scaleY: [1, 1.5, 1],
-            }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-              repeatType: "loop",
-              ease: "easeInOut",
-            }}
-          />
         </motion.div>
       </motion.div>
     </section>

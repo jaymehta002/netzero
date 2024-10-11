@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { Facebook, Instagram, Twitter } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -81,9 +81,26 @@ const Footer = () => {
             </h3>
             <div className="flex justify-center md:justify-start space-x-6">
               {[
-                { href: "#", icon: Facebook, label: "Facebook" },
-                { href: "#", icon: Twitter, label: "Twitter" },
-                { href: "#", icon: Instagram, label: "Instagram" },
+                {
+                  href: "https://www.facebook.com/terrasols",
+                  icon: Facebook,
+                  label: "Facebook",
+                },
+                {
+                  href: "https://x.com/terrasols_earth",
+                  icon: Twitter,
+                  label: "Twitter",
+                },
+                {
+                  href: "https://www.instagram.com/terrasols_earth",
+                  icon: Instagram,
+                  label: "Instagram",
+                },
+                {
+                  href: "https://www.linkedin.com/company/terrasols",
+                  icon: Linkedin,
+                  label: "LinkedIn",
+                },
               ].map((social) => (
                 <Link
                   href={social.href}

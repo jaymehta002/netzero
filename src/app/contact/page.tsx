@@ -97,7 +97,7 @@ export default function Contact() {
                   </h3>
                   <p className="text-sm text-gray-600">
                     For press-related questions, please contact us at
-                    media@eco-friendly.com.
+                    info@terrasols.earth
                   </p>
                 </div>
               </div>

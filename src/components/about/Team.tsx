@@ -21,7 +21,7 @@ const teamMembers = [
   {
     name: "Vaibhav Tiwari",
     role: "Chief Sustainability Officer",
-    image: "/team/vaibhav.png",
+    image: "/team/vaibhav.jpg",
     description:
       "Vaibhav Tiwari, a law graduate with expertise in sustainability from WWF, actively works on Carbon Credit projects and embodies a sustainable lifestyle.",
     linkedin: "#",
@@ -31,7 +31,7 @@ const teamMembers = [
   {
     name: "Dev Mehta",
     role: "Head of Sales",
-    image: "/team/dev.png",
+    image: "/team/dev.jpeg",
     description:
       "Dev Mehta is an experienced Corporate Sales professional from Calcutta University, known for his strong client relationships and strategic sales skills.",
     linkedin: "#",

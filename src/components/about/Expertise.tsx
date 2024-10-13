@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { Leaf, Users, Rocket } from "lucide-react"; // Import icons
 import Image from "next/image";

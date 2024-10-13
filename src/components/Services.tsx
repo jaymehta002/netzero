@@ -1,92 +1,74 @@
-import { AnimatePresence, motion } from "framer-motion";
+import React, { useState, useMemo, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { BarChart2, Globe, Leaf } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
 
-const ServiceCard = ({
-  title,
-  description,
-  icon: Icon,
-  index,
-}: {
+type ServiceItem = {
   title: string;
   description: string;
+  image: string;
   icon: React.ElementType;
-  index: number;
-}) => {
-  // const [isHovered, setIsHovered] = useState(false);
-  const router = useRouter();
-
-  return (
-    <motion.div
-      onClick={() => router.push("/net-zero")}
-      className="relative flex bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer"
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.2 }}
-      // onHoverStart={() => setIsHovered(true)}
-      // onHoverEnd={() => setIsHovered(false)}
-    >
-      {/* <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-[#04773b] to-[#61ff7e] opacity-0"
-        initial={false}
-        animate={{ opacity: isHovered ? 0.2 : 0 }}
-      /> */}
-
-      <Icon className="text-secondary mb-4 h-24 w-24 mr-4" />
-      <div className="flex flex-col items-center sm:items-start">
-        <h3 className="text-xl font-bold mb-3 text-black text-center sm:text-left">
-          {title}
-        </h3>
-        <p className="text-gray-900 mb-4 text-sm  text-center sm:text-left">
-          {description}
-        </p>
-      </div>
-
-      {/* <AnimatePresence>
-        {isHovered && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            className="flex items-center text-white"
-          >
-            <span className="mr-2">Learn More</span>
-            <ArrowRight className="h-5 w-5" />
-          </motion.div>
-        )}
-      </AnimatePresence> */}
-    </motion.div>
-  );
 };
 
-export default function Services() {
-  const [activeTab, setActiveTab] = useState("track");
+const data: ServiceItem[] = [
+  {
+    title: "Track",
+    description:
+      "Accurately measure emissions across all scopes—direct, indirect, and other sources—giving you a complete view of your carbon footprint.",
+    image: "/track.webp",
+    icon: BarChart2,
+  },
+  {
+    title: "Monitor",
+    description:
+      "Access real-time data to continuously monitor your emissions, helping you make immediate, informed decisions for effective carbon management.",
+    image: "/monitor.webp",
+    icon: Leaf,
+  },
+  {
+    title: "Report",
+    description:
+      "Generate customized reports that align with industry standards and global sustainability frameworks, ensuring compliance and demonstrating your commitment to reducing environmental impact.",
+    image: "/report.webp",
+    icon: Globe,
+  },
+];
 
-  const data = [
-    {
-      title: "Track",
-      description:
-        "Accurately measure emissions across all scopes—direct, indirect, and other sources—giving you a complete view of your carbon footprint.",
-      image: "/track.webp",
-      icon: BarChart2,
-    },
-    {
-      title: "Monitor",
-      description:
-        "Access real-time data to continuously monitor your emissions, helping you make immediate, informed decisions for effective carbon management.",
-      image: "/monitor.webp",
-      icon: Leaf,
-    },
-    {
-      title: "Report",
-      description:
-        "Generate customized reports that align with industry standards and global sustainability frameworks, ensuring compliance and demonstrating your commitment to reducing environmental impact.",
-      image: "/report.webp",
-      icon: Globe,
-    },
-  ];
+const ServiceCard: React.FC<ServiceItem & { index: number }> = React.memo(
+  ({ title, description, icon: Icon, index }) => {
+    const router = useRouter();
+
+    const handleClick = useCallback(() => {
+      router.push("/net-zero");
+    }, [router]);
+
+    return (
+      <motion.div
+        onClick={handleClick}
+        className="relative flex bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: index * 0.2 }}
+      >
+        <Icon className="text-secondary mb-4 h-24 w-24 mr-4" />
+        <div className="flex flex-col items-center sm:items-start">
+          <h3 className="text-xl font-bold mb-3 text-black text-center sm:text-left">
+            {title}
+          </h3>
+          <p className="text-gray-900 mb-4 text-sm text-center sm:text-left">
+            {description}
+          </p>
+        </div>
+      </motion.div>
+    );
+  }
+);
+
+ServiceCard.displayName = "ServiceCard";
+
+const Services: React.FC = () => {
+  const [activeTab, setActiveTab] = useState<string>("track");
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -97,6 +79,12 @@ export default function Services() {
       },
     },
   };
+
+  const activeDescription = useMemo(
+    () =>
+      data.find((item) => item.title.toLowerCase() === activeTab)?.description,
+    [activeTab]
+  );
 
   return (
     <div className="relative overflow-hidden bg-gray-50 min-h-screen py-16">
@@ -129,9 +117,9 @@ export default function Services() {
             initial="hidden"
             animate="visible"
           >
-            <div className="grid grid-cols-1  gap-8">
+            <div className="grid grid-cols-1 gap-8">
               {data.map((item, index) => (
-                <ServiceCard key={index} {...item} index={index} />
+                <ServiceCard key={item.title} {...item} index={index} />
               ))}
             </div>
           </motion.div>
@@ -158,6 +146,7 @@ export default function Services() {
                 width={800}
                 height={600}
                 className="rounded-2xl shadow-xl z-10 relative"
+                priority
               />
             </div>
 
@@ -172,8 +161,8 @@ export default function Services() {
                         : "bg-gray-300 text-gray-700 hover:bg-gray-400"
                     }`}
                     onClick={() => setActiveTab(item.title.toLowerCase())}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
                     {item.title}
                   </motion.button>
@@ -189,10 +178,7 @@ export default function Services() {
                   transition={{ duration: 0.3 }}
                   className="mt-6 text-center text-gray-600 text-lg"
                 >
-                  {
-                    data.find((item) => item.title.toLowerCase() === activeTab)
-                      ?.description
-                  }
+                  {activeDescription}
                 </motion.div>
               </AnimatePresence>
             </div>
@@ -201,4 +187,6 @@ export default function Services() {
       </div>
     </div>
   );
-}
+};
+
+export default Services;

@@ -2,11 +2,11 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, useAnimation } from "framer-motion";
-
+import { useRouter } from "next/navigation";
 const NetZeroHero = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const controls = useAnimation();
-
+  const router = useRouter();
   useEffect(() => {
     if (imageLoaded) {
       controls.start({ opacity: 1, scale: 1 });
@@ -37,6 +37,7 @@ const NetZeroHero = () => {
         <motion.button
           whileHover={{ scale: 1.05, backgroundColor: "#22c55e" }}
           whileTap={{ scale: 0.95 }}
+          onClick={() => router.push("/projects")}
           className="bg-green-500 text-white font-semibold py-3 sm:py-4 px-6 sm:px-8 rounded-full shadow-lg transition duration-300 text-base sm:text-lg"
         >
           Start Your Journey

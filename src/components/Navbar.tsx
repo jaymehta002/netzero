@@ -15,7 +15,7 @@ const Navbar = () => {
     ["rgba(0, 0, 0, 0)", "rgba(255, 255, 255, 0.8)"]
   );
   const textColor = useTransform(scrollY, [0, 100], ["#ffffff", "#000000"]);
-  const logoScale = useTransform(scrollY, [0, 100], [1, 0.8]);
+  const logoScale = useTransform(scrollY, [0, 100], [1.2, 1.1]);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);

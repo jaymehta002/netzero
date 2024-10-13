@@ -22,13 +22,16 @@ export default function Bento() {
           Your browser does not support the video tag.
         </video>
         <div className="absolute bottom-0 w-[80%] sm:w-[70%] md:w-[60%] lg:w-[50%] left-0">
-          <div className="w-[60%] rounded-se-xl sm:rounded-se-2xl flex items-start bg-stone-100 pt-2 pr-2 sm:pt-3 sm:pr-4 lg:pt-3 lg:pr-6">
-            <BorderButton text="Temperature" className="text-xs sm:text-sm" />
+          <div className="w-[60%] rounded-se-xl sm:rounded-se-2xl flex items-start  pt-2 pr-2 sm:pt-3 sm:pr-4 lg:pt-3 lg:pr-6">
+            <BorderButton
+              text="Temperature"
+              className="text-xs text-white border-white mx-4 sm:text-sm"
+            />
           </div>
-          <div className="text-xl sm:text-3xl md:text-4xl lg:text-6xl font-semibold w-[80%] rounded-se-xl sm:rounded-se-2xl flex items-start bg-stone-100 pt-1 pr-2 sm:pt-2 sm:pr-4 lg:pt-3 lg:pr-6">
+          <div className="text-xl sm:text-3xl md:text-4xl px-4 font-semibold w-[80%] rounded-se-xl sm:rounded-se-2xl flex items-start text-white pt-1 pr-2 sm:pt-2 sm:pr-4 lg:pt-3 lg:pr-6">
             2.5 Lakhs
           </div>
-          <div className="text-xl sm:text-3xl md:text-4xl lg:text-6xl font-semibold w-full rounded-se-xl sm:rounded-se-2xl flex items-start bg-stone-100 pt-1 pr-2 sm:pt-2 sm:pr-4 lg:pt-3 lg:pr-6">
+          <div className="text-xl sm:text-3xl md:text-4xl px-4 pb-4 font-semibold w-full rounded-se-xl sm:rounded-se-2xl flex items-start text-white pt-1 pr-2 sm:pt-2 sm:pr-4 lg:pt-3 lg:pr-6">
             Wildlife fires
           </div>
         </div>

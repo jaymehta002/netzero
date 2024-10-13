@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Leaf } from "lucide-react";
-
+import { useRouter } from "next/navigation";
 const LandingGraph = () => {
   const [isHovered, setIsHovered] = useState(false);
-
+  const router = useRouter();
   const containerVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -184,16 +184,17 @@ const LandingGraph = () => {
           <p className="text-gray-300 mb-8 text-lg">
             Our innovative solutions help businesses dramatically reduce their
             carbon emissions over time. Unlike the traditional approach, which
-            often leads to increased emissions, Terrasols&apos; strategies result in
-            a consistent downward trend in your carbon footprint.
+            often leads to increased emissions, Terrasols&apos; strategies
+            result in a consistent downward trend in your carbon footprint.
           </p>
           <motion.div
-            className="relative inline-block"
+            className="relative inline-block cursor-pointer"
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
+            onClick={() => router.push("/projects")}
           >
             <motion.a
-              href="/solutions"
+              href="/projects"
               className="inline-flex items-center bg-green-600 text-white px-6 py-3 rounded-lg text-lg font-medium transition-shadow duration-300 ease-in-out"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

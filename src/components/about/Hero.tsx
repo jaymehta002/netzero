@@ -10,7 +10,13 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 const WorldMap = () => (
-  <Image src="/world.svg" alt="World Map" width={1000} height={500} />
+  <Image
+    src="/world.svg"
+    alt="World Map"
+    width={1000}
+    height={500}
+    style={{ opacity: 0.7 }}
+  />
   // <svg
   //   viewBox="0 0 1000 500"
   //   className="w-full h-full opacity-20"
@@ -67,9 +73,12 @@ const EnhancedHero = () => {
   }, [controls, inView]);
 
   const stats = [
-    { value: "1M+", label: "CO₂ Saved" },
-    { value: "50+", label: "Countries" },
-    { value: "100K+", label: "Users" },
+    { value: "4+ yrs", label: "Experience" },
+    { value: "6", label: "Projects" },
+    { value: "100%", label: "Dedication" },
+    // { value: "1M+", label: "CO₂ Saved" },
+    // { value: "50+", label: "Countries" },
+    // { value: "100K+", label: "Users" },
   ];
 
   useEffect(() => {
@@ -80,7 +89,7 @@ const EnhancedHero = () => {
   }, []);
 
   return (
-    <div className="relative h-screen overflow-hidden bg-gradient-to-br from-[#e3f2f9] to-[#c8e0eb] dark:from-[#1e2f37] dark:to-[#0f1d28] flex flex-col items-center justify-center">
+    <div className="relative h-screen overflow-hidden  flex flex-col items-center justify-center">
       {/* Background Particles */}
       {[...Array(20)].map((_, i) => (
         <FloatingParticle key={i} delay={i * 0.2} />

@@ -2,24 +2,10 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, useAnimation } from "framer-motion";
-import { useSpring, animated } from "react-spring";
 
 const NetZeroHero = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const controls = useAnimation();
-  const [windowDimensions, setWindowDimensions] = useState({ width: 0, height: 0 });
-
-  useEffect(() => {
-    // Set window dimensions on mount
-    const handleResize = () => {
-      setWindowDimensions({ width: window.innerWidth, height: window.innerHeight });
-    };
-
-    handleResize(); // Set initial dimensions
-    window.addEventListener('resize', handleResize);
-    
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   useEffect(() => {
     if (imageLoaded) {
@@ -27,62 +13,8 @@ const NetZeroHero = () => {
     }
   }, [imageLoaded, controls]);
 
-  const [{ rotateY }, set] = useSpring(() => ({ rotateY: 0 }));
-
   return (
     <section className="relative min-h-screen flex flex-col lg:flex-row items-center justify-between overflow-hidden px-4 lg:px-12 bg-gradient-to-br from-blue-50 via-green-50 to-gray-50">
-      {/* Animated Background Elements */}
-      <motion.div
-        className="absolute inset-0 z-0 pointer-events-none"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 2 }}
-      >
-        {[...Array(20)].map((_, index) => (
-          <motion.div
-            key={index}
-            className="absolute"
-            initial={{
-              x: Math.random() * windowDimensions.width,
-              y: Math.random() * windowDimensions.height,
-              scale: Math.random() * 0.5 + 0.5,
-            }}
-            animate={{
-              y: [0, -20, 0],
-              x: [0, Math.random() * 20 - 10, 0],
-              rotate: [0, 360],
-              transition: {
-                y: {
-                  repeat: Infinity,
-                  duration: 3 + Math.random() * 2,
-                  ease: "easeInOut",
-                },
-                x: {
-                  repeat: Infinity,
-                  duration: 5 + Math.random() * 3,
-                  ease: "easeInOut",
-                },
-                rotate: {
-                  repeat: Infinity,
-                  duration: 10 + Math.random() * 5,
-                  ease: "linear",
-                },
-              },
-            }}
-          >
-            <div
-              className={`w-4 h-4 rounded-full ${
-                index % 3 === 0
-                  ? "bg-green-300"
-                  : index % 3 === 1
-                  ? "bg-blue-300"
-                  : "bg-yellow-300"
-              }`}
-            />
-          </motion.div>
-        ))}
-      </motion.div>
-
       {/* Text Content */}
       <motion.div
         initial={{ opacity: 0, x: -50 }}
@@ -114,27 +46,15 @@ const NetZeroHero = () => {
       {/* Image Section with Loading Animation */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
-        animate={controls}
+        animate={{ opacity: imageLoaded ? 1 : 0, scale: imageLoaded ? 1 : 0.8 }}
         transition={{ duration: 0.8 }}
         className="relative z-10 lg:w-1/2 h-full flex justify-center lg:justify-end items-center"
       >
-        <animated.div
-          style={{ transform: rotateY.interpolate((r) => `rotateY(${r}deg)`) }}
-          onMouseMove={({ clientX, currentTarget }) => {
-            const { left, width } = currentTarget.getBoundingClientRect();
-            const x = clientX - left;
-            set({ rotateY: (x / width) * 30 - 15 });
-          }}
-          onMouseLeave={() => set({ rotateY: 0 })}
-          className="w-[80%] h-auto flex items-center justify-center"
+        <motion.div
+          animate={{ rotate: imageLoaded ? 360 : 0 }}
+          transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
+          className="flex justify-center items-center"
         >
-          {!imageLoaded && (
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-              className="w-32 h-32 border-t-4 border-green-500 rounded-full"
-            />
-          )}
           <Image
             src="/net-zero/hero.png"
             width={800}
@@ -146,36 +66,7 @@ const NetZeroHero = () => {
             priority={true}
             onLoad={() => setImageLoaded(true)}
           />
-        </animated.div>
-      </motion.div>
-
-      {/* Floating Earth Animation */}
-      <motion.div
-        className="absolute top-10 right-10 z-20 hidden lg:block"
-        animate={{
-          y: [0, -20, 0],
-          rotate: [0, 360],
-        }}
-        transition={{
-          y: {
-            repeat: Infinity,
-            duration: 5,
-            ease: "easeInOut",
-          },
-          rotate: {
-            repeat: Infinity,
-            duration: 20,
-            ease: "linear",
-          },
-        }}
-      >
-        <Image
-          src="/earth.png"
-          width={100}
-          height={100}
-          alt="Floating Earth"
-          className="opacity-70"
-        />
+        </motion.div>
       </motion.div>
     </section>
   );

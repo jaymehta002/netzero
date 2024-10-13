@@ -128,17 +128,20 @@ export default function ExpandableServicesSection() {
   }, []);
 
   return (
-    <div className="container h-[80vh] mx-auto px-4 py-8 mt-16">
-      {" "}
-      {/* Added mt-16 for top margin */}
+    <div className="relative md:px-20 h-[80vh] mx-auto px-4 py-8 mt-16 overflow-hidden">
+      {/* Background with Moving Gradient */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-r from-green-200 via-blue-300 to-purple-400 bg-[length:300%_300%] animate-movingGradient opacity-40"></div>
+      <div className="absolute inset-0 z-0 bg-noise opacity-10"></div>
+
       <motion.h2
-        className="text-3xl font-bold text-center mb-8 text-secondary"
+        className="relative text-3xl font-bold text-center mb-8 text-secondary z-10"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
         Our Services
       </motion.h2>
+
       <AnimatePresence>
         {active && (
           <motion.div
@@ -149,8 +152,9 @@ export default function ExpandableServicesSection() {
           />
         )}
       </AnimatePresence>
+
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 z-10"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -179,6 +183,7 @@ export default function ExpandableServicesSection() {
           </motion.div>
         ))}
       </motion.div>
+
       <AnimatePresence>
         {active && (
           <div className="fixed inset-0 flex items-center justify-center z-[100] p-4">

@@ -55,7 +55,7 @@ const Steps = () => {
       />
       <motion.img
         src="/cloud.svg"
-        className="absolute bottom-10 left-10 w-20 h-20 md:w-32 md:h-32 opacity-30"
+        className="absolute z-0 bottom-10 left-10 w-20 h-20 md:w-32 md:h-32 opacity-30"
         initial={{ scale: 0, opacity: 0 }}
         whileInView={{ scale: 1, opacity: 0.3 }}
         transition={{ duration: 1, ease: "easeOut" }}
@@ -72,7 +72,7 @@ const Steps = () => {
         Our Net Zero Process
       </motion.h2>
 
-      <div className="relative">
+      <div className="relative z-20">
         {/* Vertical line in the center (hidden on small screens) */}
         <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-emerald-200 hidden md:block"></div>
 
@@ -130,15 +130,6 @@ const Steps = () => {
         </div>
       </div>
 
-      {/* Additional decorative SVGs */}
-      <motion.img
-        src="/palm.svg"
-        className="absolute z-0 top-1/4 left-5 w-12 h-12 md:w-20 md:h-20 opacity-30"
-        initial={{ x: -100, opacity: 0 }}
-        whileInView={{ x: 0, opacity: 0.3 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-        viewport={{ once: true }}
-      />
       <motion.img
         src="/earth.svg"
         className="absolute bottom-1/4 right-5 w-16 h-16 md:w-24 md:h-24 opacity-30"

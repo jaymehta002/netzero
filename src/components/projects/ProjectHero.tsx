@@ -12,18 +12,22 @@ const ProjectHero = () => {
   useEffect(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: heroRef.current, // Triggering based on the heroRef
-        start: "top bottom",
-        end: "bottom top", // Adjust the end position based on your layout
-        scrub: true, // Smoothly animate the text as you scroll
+        trigger: heroRef.current,
+        start: "top bottom", // When the top of the hero section reaches the bottom of the viewport
+        end: "bottom top", // When the bottom of the hero section reaches the top of the viewport
+        scrub: true, // Smooth animation on scroll
       },
     });
 
-    tl.fromTo(
-      elRef.current,
-      { x: 0, zoom: 0, opacity: 0 }, // Start from the left
-      { x: 0, zoom: 1, opacity: 1, duration: 1.8 } // Move to its original position
-    );
+    // Parallax effect for background
+    tl.to(heroRef.current, {
+      backgroundPosition: "center 80%", // Moves background upwards during scroll
+      ease: "none",
+      duration: 1.8,
+    });
+
+    // Parallax effect for text
+    tl.fromTo(elRef.current, { y: 0 }, { y: -50, ease: "none", duration: 1.8 });
 
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
@@ -33,20 +37,32 @@ const ProjectHero = () => {
   return (
     <div
       ref={heroRef}
-      className="bg-cover  bg-center h-screen flex items-center justify-center"
+      className="relative bg-cover bg-center h-screen flex items-center justify-center text-center p-8"
+      style={{
+        backgroundImage: 'url("/project.jpg")', // Replace with your background image
+        backgroundAttachment: "fixed", // Parallax effect
+      }}
     >
+      {/* Fading Background Mask */}
+      <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-white to-transparent z-10" />
+
+      {/* Content */}
       <motion.div
+        className="relative z-20 flex flex-col items-center justify-center" // Centers content vertically and horizontally
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="text-center"
       >
-        <motion.h1 ref={elRef} className="text-9xl font-bold mb-6">
-          <span className="text-primary">Carbon</span>{" "}
-          <span className="text-white bg-primary">Credits</span>
+        <motion.h1
+          ref={elRef}
+          className="md:text-6xl text-3xl font-bold mb-6 text-white" // Larger, bold heading
+        >
+          <span className="text-white">Carbon</span>{" "}
+          <span className="text-green-300">Credits</span>
         </motion.h1>
-        <motion.p className="text-4xl">
-          Generate carbon credits through our innovative projects.
+        <motion.p className="md:text-2xl text-lg text-white max-w-2xl leading-relaxed">
+          Generate carbon credits through our innovative projects and help shape
+          a sustainable future.
         </motion.p>
       </motion.div>
     </div>

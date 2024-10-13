@@ -70,6 +70,7 @@ const servicesData = [
     ],
   },
 ];
+
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -128,13 +129,13 @@ export default function ExpandableServicesSection() {
   }, []);
 
   return (
-    <div className="relative md:px-20 h-[80vh] mx-auto px-4 py-8 mt-16 overflow-hidden">
+    <section className="relative w-full px-4 sm:px-6 md:px-8 lg:px-12 py-16 min-h-screen flex flex-col justify-center items-center overflow-hidden">
       {/* Background with Moving Gradient */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-r from-green-200 via-blue-300 to-purple-400 bg-[length:300%_300%] animate-movingGradient opacity-40"></div>
+      <div className="absolute inset-0 z-0 bg-gradient-to-r from-green-200 via-green-300 to-green-400 bg-[length:300%_300%] animate-movingGradient opacity-40"></div>
       <div className="absolute inset-0 z-0 bg-noise opacity-10"></div>
 
       <motion.h2
-        className="relative text-3xl font-bold text-center mb-8 text-secondary z-10"
+        className="relative text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8 text-secondary z-10"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -148,13 +149,13 @@ export default function ExpandableServicesSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/20 h-full w-full z-10"
+            className="fixed inset-0 bg-black/20 z-40"
           />
         )}
       </AnimatePresence>
 
       <motion.div
-        className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 z-10"
+        className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 z-10 w-full max-w-7xl"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -169,13 +170,13 @@ export default function ExpandableServicesSection() {
           >
             <Card className="h-full hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors duration-300">
               <CardHeader>
-                <CardTitle className="text-secondary flex justify-between items-center">
+                <CardTitle className="text-secondary flex justify-between items-center text-base sm:text-lg lg:text-xl">
                   {category.category}
                   <ChevronDown className="h-4 w-4" />
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-xs sm:text-sm text-muted-foreground">
                   {category.services.length} services available
                 </p>
               </CardContent>
@@ -186,16 +187,16 @@ export default function ExpandableServicesSection() {
 
       <AnimatePresence>
         {active && (
-          <div className="fixed inset-0 flex items-center justify-center z-[100] p-4">
+          <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
             <motion.div
               layoutId={`card-${active.category}-${id}`}
               ref={ref}
-              className="w-full max-w-[90%] md:max-w-[500px] h-[50vh] md:h-fit md:max-h-[90%] flex flex-col bg-white dark:bg-neutral-900 rounded-3xl overflow-hidden shadow-xl"
+              className="w-full max-w-[95%] sm:max-w-[90%] md:max-w-[600px] h-[80vh] sm:h-auto sm:max-h-[80vh] flex flex-col bg-white dark:bg-neutral-900 rounded-3xl overflow-hidden shadow-xl"
             >
-              <div className="flex justify-between items-start p-4">
+              <div className="flex justify-between items-start p-4 border-b">
                 <motion.h3
                   layoutId={`title-${active.category}-${id}`}
-                  className="font-medium text-neutral-700 dark:text-neutral-200 text-xl"
+                  className="font-medium text-neutral-700 dark:text-neutral-200 text-lg sm:text-xl"
                 >
                   {active.category}
                 </motion.h3>
@@ -215,7 +216,7 @@ export default function ExpandableServicesSection() {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.05 }}
-                      className="text-sm text-neutral-600 dark:text-neutral-400"
+                      className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400"
                     >
                       {service}
                     </motion.li>
@@ -226,6 +227,6 @@ export default function ExpandableServicesSection() {
           </div>
         )}
       </AnimatePresence>
-    </div>
+    </section>
   );
 }

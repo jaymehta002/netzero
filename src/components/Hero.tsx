@@ -133,7 +133,7 @@ const HeroSection = () => {
         <motion.div variants={itemVariants}>
           <Link href="/contact">
             <motion.span
-              className="group relative inline-flex items-center justify-center px-6 py-3 text-lg font-medium overflow-hidden rounded-lg bg-green-500 text-white transition-all duration-300 ease-out hover:bg-green-600"
+              className="group relative inline-flex items-center justify-center px-6 py-3 text-lg font-medium overflow-hidden rounded-lg bg-secondary text-white transition-all duration-300 ease-out hover:bg-green-600"
               whileHover={{
                 scale: 1.05,
                 boxShadow: "0px 5px 15px rgba(76, 175, 80, 0.4)",

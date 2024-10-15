@@ -107,6 +107,8 @@ const Footer = () => {
                   key={social.label}
                   className="text-white hover:text-green-300 transition duration-300"
                   aria-label={social.label}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <social.icon size={28} />
                 </Link>

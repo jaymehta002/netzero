@@ -1,13 +1,11 @@
 "use client";
+import CTA from '@/components/CTA';
+import ProcessSteps from "@/components/erw/ProcessSteps";
 import Hero from "@/components/Hero";
 import ERWSection from "@/components/home/ERWSection";
+import VideoTestimonialDemo from '@/components/VideoTestimonial';
 import { useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import ProcessSteps from "@/components/erw/ProcessSteps";
-import VideoTestimonialDemo from '@/components/VideoTestimonial'
-import CTA from '@/components/CTA'
 export default function Main() {
   const [scrolled, setScrolled] = useState(false);
   const controls = useAnimation();

@@ -101,7 +101,7 @@ const TerrasolsSections = () => {
             Leading the Carbon Revolution
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            We're not just generating carbon credits—we're transforming agriculture, 
+            We&apos;re not just generating carbon credits—we&apos;re transforming agriculture, 
             empowering farmers, and creating lasting environmental impact through innovative technology.
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-green-500 to-emerald-500 mx-auto mt-6 rounded-full" />
@@ -215,7 +215,7 @@ const TerrasolsSections = () => {
             Be Part of the Solution
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            Whether you're a business, farmer, or investor—your role matters. 
+            Whether you&apos;re a business, farmer, or investor—your role matters. 
             Choose how you want to make a difference in regenerative agriculture and climate action.
           </p>
           <div className="w-32 h-1 bg-gradient-to-r from-green-500 to-emerald-500 mx-auto rounded-full" />

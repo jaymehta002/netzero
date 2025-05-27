@@ -105,7 +105,7 @@ const ERWSection = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.8 }}
           >
-            A revolutionary climate solution that accelerates nature's own process of carbon capture while transforming agricultural productivity
+            A revolutionary climate solution that accelerates nature&apos;s own process of carbon capture while transforming agricultural productivity
           </motion.p>
         </motion.div>
 
@@ -159,7 +159,7 @@ const ERWSection = () => {
               <h3 className="text-3xl font-bold text-white mb-6">The Science</h3>
               <div className="space-y-4 text-green-100 leading-relaxed">
                 <p>
-                  Enhanced Rock Weathering mimics and accelerates a process that has been removing CO₂ from Earth's atmosphere for millions of years.
+                  Enhanced Rock Weathering mimics and accelerates a process that has been removing CO₂ from Earth&apos;s atmosphere for millions of years.
                 </p>
                 <p>
                   When certain rocks like basalt are crushed and spread on land, they react with CO₂ and water to form stable carbonates - permanently locking away carbon while releasing beneficial minerals.

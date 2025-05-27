@@ -19,6 +19,7 @@ const VideoTestimonial = ({
   className = "",
   style
 }: VideoTestimonialProps) => {
+  
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [showControls, setShowControls] = useState(false);

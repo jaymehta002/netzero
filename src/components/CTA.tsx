@@ -1,26 +1,22 @@
-import { useState } from 'react';
-import { 
-  BarChart3, 
-  Handshake, 
-  Sprout, 
-  ArrowRight, 
-  CheckCircle, 
-  TrendingUp,
-  Users,
-  Leaf,
-  Target,
-  Globe,
-  Heart,
+import {
+  ArrowRight,
+  BarChart3,
+  CheckCircle,
   DollarSign,
+  Globe,
+  Handshake,
+  Heart,
   Shield,
-  Award,
-  Zap,
+  Sprout,
+  Target,
+  Zap
 } from 'lucide-react';
 import Link from 'next/link';
+import { useState } from 'react';
 
 const TerrasolsSections = () => {
-  const [hoveredCard, setHoveredCard] = useState(null);
-  const [hoveredCTA, setHoveredCTA] = useState(null);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [hoveredCTA, setHoveredCTA] = useState<number | null>(null);
 
   const whyChooseCards = [
     {
@@ -120,6 +116,13 @@ const TerrasolsSections = () => {
                 className="group relative"
                 onMouseEnter={() => setHoveredCard(card.id)}
                 onMouseLeave={() => setHoveredCard(null)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    setHoveredCard(card.id);
+                  }
+                }}
               >
                 <div className={`relative bg-white rounded-2xl p-8 shadow-lg border border-gray-100 transition-all duration-500 hover:shadow-2xl hover:-translate-y-3 overflow-hidden ${
                   hoveredCard === card.id ? 'ring-2 ring-emerald-500/30' : ''
@@ -148,7 +151,7 @@ const TerrasolsSections = () => {
                   {/* Features List */}
                   <ul className="space-y-3 relative z-10">
                     {card.features.map((feature, index) => (
-                      <li key={index} className="flex items-center text-sm text-gray-600">
+                      <li key={`${card.id}-feature-${index}`} className="flex items-center text-sm text-gray-600">
                         <div className="w-2 h-2 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full mr-3 flex-shrink-0" />
                         {feature}
                       </li>
@@ -185,10 +188,10 @@ const TerrasolsSections = () => {
       <div className="max-w-5xl mx-auto px-4 mb-20">
         <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-            {trustIndicators.map((indicator, index) => {
+            {trustIndicators.map((indicator) => {
               const IconComponent = indicator.icon;
               return (
-                <div key={index} className="text-center group">
+                <div key={`trust-${indicator.label}`} className="text-center group">
                   <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r from-green-100 to-emerald-100 rounded-xl mb-3 transition-transform duration-300 group-hover:scale-110">
                     <IconComponent className="w-6 h-6 text-green-600" />
                   </div>
@@ -227,6 +230,13 @@ const TerrasolsSections = () => {
                 className="group relative"
                 onMouseEnter={() => setHoveredCTA(option.id)}
                 onMouseLeave={() => setHoveredCTA(null)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    setHoveredCTA(option.id);
+                  }
+                }}
               >
                 <div className={`relative bg-white rounded-2xl p-8 shadow-lg border border-gray-100 transition-all duration-500 hover:shadow-2xl hover:-translate-y-4 overflow-hidden min-h-[500px] flex flex-col ${
                   hoveredCTA === option.id ? 'ring-2 ring-green-500/30' : ''
@@ -262,7 +272,7 @@ const TerrasolsSections = () => {
                     <h4 className="text-sm font-semibold text-gray-800 mb-3">Key Benefits:</h4>
                     <ul className="space-y-2">
                       {option.benefits.map((benefit, index) => (
-                        <li key={index} className="flex items-center text-sm text-gray-600">
+                        <li key={`${option.id}-benefit-${index}`} className="flex items-center text-sm text-gray-600">
                           <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
                           {benefit}
                         </li>

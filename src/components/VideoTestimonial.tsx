@@ -1,6 +1,18 @@
 import { useState, useRef, useEffect } from 'react';
 import { Play, Pause, Volume2, VolumeX } from 'lucide-react';
 
+// Define interface for component props
+interface VideoTestimonialProps {
+  name?: string;
+  location?: string;
+  quote?: string;
+  videoUrl?: string;
+  thumbnail?: string;
+  className?: string;
+  rating?: number;
+  style?: React.CSSProperties; // Add style prop type
+}
+
 const VideoTestimonial = ({
   name = "Sarah Johnson",
   location = "San Francisco, CA",
@@ -8,13 +20,14 @@ const VideoTestimonial = ({
   videoUrl = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
   thumbnail = "https://images.unsplash.com/photo-1494790108755-2616c9a86d6b?w=800&h=600&fit=crop&crop=face",
   className = "",
-  rating = 5
-}) => {
+  rating = 5,
+  style
+}: VideoTestimonialProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [showControls, setShowControls] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
-  const videoRef = useRef(null);
+  const videoRef = useRef<HTMLVideoElement>(null); // Add proper type for video ref
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -63,7 +76,7 @@ const VideoTestimonial = ({
     }
   }, []);
 
-  const renderStars = (rating) => {
+  const renderStars = (rating: number) => { // Add type for rating parameter
     return Array.from({ length: 5 }, (_, i) => (
       <svg
         key={i}
@@ -77,7 +90,7 @@ const VideoTestimonial = ({
   };
 
   return (
-    <div id="video" className={`group w-full max-w-sm mx-auto ${className}`}>
+    <div id="video" className={`group w-full max-w-sm mx-auto ${className}`} style={style}>
       <div 
         className="relative bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 border border-gray-100"
         onMouseEnter={() => setIsHovering(true)}

@@ -41,11 +41,11 @@ const steps = [
   }
 ];
 
-const stats = [
-  { value: "200%", label: "Soil Health", icon: "🌱", color: "text-green-500" },
-  { value: "50%", label: "Less Water", icon: "💧", color: "text-green-400" },
-  { value: "30%", label: "More Yield", icon: "📈", color: "text-green-600" }
-];
+// const stats = [
+//   { value: "200%", label: "Soil Health", icon: "🌱", color: "text-green-500" },
+//   { value: "50%", label: "Less Water", icon: "💧", color: "text-green-400" },
+//   { value: "30%", label: "More Yield", icon: "📈", color: "text-green-600" }
+// ];
 
 export default function ProcessSteps() {
   const [activeStep, setActiveStep] = useState(0);

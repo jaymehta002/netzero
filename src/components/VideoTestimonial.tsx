@@ -5,29 +5,25 @@ import { Play, Pause, Volume2, VolumeX } from 'lucide-react';
 interface VideoTestimonialProps {
   name?: string;
   location?: string;
-  quote?: string;
   videoUrl?: string;
   thumbnail?: string;
   className?: string;
-  rating?: number;
-  style?: React.CSSProperties; // Add style prop type
+  style?: React.CSSProperties;
 }
 
 const VideoTestimonial = ({
   name = "Sarah Johnson",
   location = "San Francisco, CA",
-  quote = "This service completely transformed how we approach our business. The results exceeded all our expectations and the support team was incredible throughout the entire process.",
   videoUrl = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
   thumbnail = "https://images.unsplash.com/photo-1494790108755-2616c9a86d6b?w=800&h=600&fit=crop&crop=face",
   className = "",
-  rating = 5,
   style
 }: VideoTestimonialProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [showControls, setShowControls] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null); // Add proper type for video ref
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -75,19 +71,6 @@ const VideoTestimonial = ({
       };
     }
   }, []);
-
-  const renderStars = (rating: number) => { // Add type for rating parameter
-    return Array.from({ length: 5 }, (_, i) => (
-      <svg
-        key={i}
-        className={`w-4 h-4 ${i < rating ? 'text-yellow-400' : 'text-gray-300'}`}
-        fill="currentColor"
-        viewBox="0 0 20 20"
-      >
-        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-      </svg>
-    ));
-  };
 
   return (
     <div id="video" className={`group w-full max-w-sm mx-auto ${className}`} style={style}>
@@ -158,37 +141,12 @@ const VideoTestimonial = ({
               </div>
             </div>
           )}
-
-          {/* Status Indicator */}
-          {/* <div className="absolute top-4 right-4">
-            <div className="bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg">
-              ✓ Verified
-            </div>
-          </div> */}
         </div>
 
         {/* Content Section */}
         <div className="p-6 bg-gradient-to-br from-white to-green-50/50">
-          {/* Rating */}
-          {/* <div className="flex items-center gap-2 mb-4">
-            <div className="flex">{renderStars(rating)}</div>
-            <span className="text-sm text-gray-600 font-medium">{rating}.0</span>
-          </div> */}
-
-          {/* Quote */}
-          {/* <blockquote className="text-gray-700 leading-relaxed mb-6 relative">
-            <div className="absolute -top-2 -left-1 text-4xl text-green-200 font-serif">"</div>
-            <p className="relative z-10 italic">{quote}</p>
-            <div className="absolute -bottom-4 -right-1 text-4xl text-green-200 font-serif">"</div>
-          </blockquote> */}
-
           {/* Profile */}
           <div className="flex items-center gap-4">
-            {/* <div 
-              className="w-12 h-12 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-white font-bold text-lg shadow-lg"
-            >
-              {name.charAt(0)}
-            </div> */}
             <div>
               <h4 className="text-gray-900 font-semibold text-lg">{name}</h4>
               <p className="text-green-600 text-sm font-medium">{location}</p>
@@ -231,27 +189,20 @@ export default function VideoTestimonialsDemo() {
     {
       name: "Saket Budh Sen",
       location: "Khandwa, MP",
-      // quote: "I was skeptical at first, but after seeing the results in just the first month, I knew we made the right choice. Highly recommend to anyone looking for real growth.",
       videoUrl: "https://t3nt3smucs.ufs.sh/f/GP6ieuAM82aYSLUmInxk3lVyLFC1WjpZ2BOJvdbMQqHIK0Nz",
-      thumbnail: "/testimonial/test1.png",
-      rating: 5
+      thumbnail: "/testimonial/test1.png"
     },
     {
       name: "Sunita Sondhia",
       location: "Khandwa, MP",
-      quote: "This service completely transformed how we approach our business. The results exceeded all our expectations and the support team was incredible throughout the entire process.",
       videoUrl: "https://t3nt3smucs.ufs.sh/f/GP6ieuAM82aYpeQGIe3wDCXTStao2wuJGgNHO8KPe3MLrj1A",
-      thumbnail: "/testimonial/test2.png",
-      rating: 5
+      thumbnail: "/testimonial/test2.png"
     },
     {
       name: "Satya Narayan Mehra",
       location: "Khandwa, MP",
-      quote: "The attention to detail and personalized approach made all the difference. Our team couldn't be happier with the outcome and ongoing support we receive.",
-      // videoUrl: "https://t3nt3smucs.ufs.sh/f/GP6ieuAM82aYnsG7BAH0rgDHs8RVoAxZm4fFj5UyLuaEBJd2",
       videoUrl: "https://t3nt3smucs.ufs.sh/f/GP6ieuAM82aYnQMKfJH0rgDHs8RVoAxZm4fFj5UyLuaEBJd2",
-      thumbnail: "/testimonial/test3.png",
-      rating: 5
+      thumbnail: "/testimonial/test3.png"
     }
   ];
 
@@ -264,7 +215,7 @@ export default function VideoTestimonialsDemo() {
             What Our Clients Say
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Real stories from real people who've experienced incredible results
+            Real stories from real people who&apos;ve experienced incredible results
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-green-400 to-green-600 mx-auto mt-6 rounded-full" />
         </div>

@@ -14,8 +14,8 @@ import {
 import { useState } from 'react';
 import Link from 'next/link'
 const TerrasolsSections = () => {
-  const [hoveredCard, setHoveredCard] = useState(null);
-  const [hoveredCTA, setHoveredCTA] = useState(null);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [hoveredCTA, setHoveredCTA] = useState<number | null>(null);
 
   const whyChooseCards = [
     {

@@ -6,10 +6,10 @@ import {
   Globe,
   Handshake,
   Heart,
-  Shield,
+  // Shield,
   Sprout,
   Target,
-  Zap
+  // Zap
 } from 'lucide-react';
 import { useState } from 'react';
 import Link from 'next/link'

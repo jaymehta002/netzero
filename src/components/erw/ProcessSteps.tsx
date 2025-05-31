@@ -194,7 +194,7 @@ export default function ProcessSteps() {
             </div>
           ))}
         </div> */}
-        <Impact />
+        {/* <Impact /> */}
       </div>
 
       <style jsx>{`

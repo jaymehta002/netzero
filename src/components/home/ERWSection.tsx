@@ -210,7 +210,7 @@ const ERWSection = () => {
             className="inline-flex flex-col sm:flex-row gap-4"
             whileHover={{ scale: 1.02 }}
           >
-            <Link href="/contact">
+            <Link href="/projects">
             <motion.button 
               className="bg-gradient-to-r from-green-400 to-emerald-300 text-green-900 text-xl font-bold py-4 px-12 rounded-2xl transition-all duration-300 hover:shadow-2xl"
               whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(34, 197, 94, 0.3)" }}

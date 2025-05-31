@@ -25,7 +25,7 @@ const Navbar = () => {
     closed: { opacity: 0, x: "100%" },
   };
 
-  const navItems = ["Home", "About", "Net Zero", "Projects", "Contact"];
+  const navItems = ["Home", "About", "Projects", "Contact"]; // "Net Zero",
 
   // Check background color and update state
   useEffect(() => {

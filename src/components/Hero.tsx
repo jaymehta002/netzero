@@ -105,7 +105,7 @@ const Hero = () => {
               <div className="text-sm text-white/70">Acres Revitalized</div>
             </div>
             <div className="hidden md:block bg-white/5 backdrop-blur-sm p-4 rounded-lg border border-white/10">
-              <div className="text-2xl md:text-3xl font-bold text-green-400">50+</div>
+              <div className="text-2xl md:text-3xl font-bold text-green-400">500+</div>
               <div className="text-sm text-white/70">Partner Farmers</div>
             </div>
           </div>

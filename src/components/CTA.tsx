@@ -80,11 +80,11 @@ const TerrasolsSections = () => {
     }
   ];
 
-  const trustIndicators = [
-    { icon: Shield, label: "Verified", value: "100%" },
-    { icon: Zap, label: "Fast", value: "24h Processing" },
-    { icon: Globe, label: "Global", value: "50+ Countries" }
-  ];
+  // const trustIndicators = [
+  //   { icon: Shield, label: "Verified", value: "100%" },
+  //   { icon: Zap, label: "Fast", value: "24h Processing" },
+  //   { icon: Globe, label: "Global", value: "50+ Countries" }
+  // ];
 
   return (
     <div className="bg-gradient-to-br from-gray-50 via-white to-emerald-50 py-12 sm:py-16 lg:py-20">

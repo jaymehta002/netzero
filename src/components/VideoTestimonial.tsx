@@ -285,7 +285,7 @@ export default function VideoTestimonialsCarousel() {
             What Our Partners Say
           </h2>
           <p className="text-xl lg:text-2xl text-gray-600 max-w-3xl mx-auto mb-8">
-            Real stories from valued partners who've experienced incredible results
+            Real stories from valued partners who&apos;ve experienced incredible results
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-green-400 to-green-600 mx-auto rounded-full" />
         </div>

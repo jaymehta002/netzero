@@ -1,7 +1,7 @@
 'use client'
 import { ChevronRight, Droplets, Mountain, Sprout, TrendingUp, Wind } from 'lucide-react';
 import { useState } from 'react';
-import Impact from '../home/Impact';
+// import Impact from '../home/Impact';
 
 const steps = [
   {

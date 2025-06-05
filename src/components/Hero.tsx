@@ -15,7 +15,7 @@ const Hero = () => {
 
     // Start video playback
     if (videoRef.current) {
-      videoRef.current.play().catch((error: any) => {
+      videoRef.current.play().catch((error: unknown) => {
         console.error("Video autoplay failed:", error);
         // Set a poster image as fallback
       });

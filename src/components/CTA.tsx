@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { useState } from 'react';
 import Link from 'next/link'
+import PartnerCarousel from '@/components/PartnerCarousel';
 const TerrasolsSections = () => {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [hoveredCTA, setHoveredCTA] = useState<number | null>(null);
@@ -272,42 +273,7 @@ const TerrasolsSections = () => {
         </div>
 
         {/* Bottom Stats Section */}
-        <div className="mt-16 sm:mt-20 bg-gradient-to-r from-green-900 to-emerald-900 rounded-2xl p-6 sm:p-8 text-white shadow-2xl">
-          <div className="text-center mb-6 sm:mb-8">
-            <h3 className="text-xl sm:text-2xl font-bold mb-2">Trusted by Industry Leaders</h3>
-            <p className="text-green-200 text-sm sm:text-base">Join thousands who are already making a difference</p>
-          </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-            <div className="text-center group">
-              <div className="text-2xl sm:text-4xl font-bold mb-2 bg-gradient-to-r from-green-300 to-emerald-300 bg-clip-text text-transparent">
-                10,000+
-              </div>
-              <div className="text-green-200 text-xs sm:text-sm">Carbon Credits Generated</div>
-              <div className="w-8 sm:w-12 h-0.5 bg-gradient-to-r from-green-400 to-emerald-400 mx-auto mt-2 transition-transform duration-300 group-hover:scale-150" />
-            </div>
-            <div className="text-center group">
-              <div className="text-2xl sm:text-4xl font-bold mb-2 bg-gradient-to-r from-green-300 to-emerald-300 bg-clip-text text-transparent">
-                500+
-              </div>
-              <div className="text-green-200 text-xs sm:text-sm">Farmers Empowered</div>
-              <div className="w-8 sm:w-12 h-0.5 bg-gradient-to-r from-green-400 to-emerald-400 mx-auto mt-2 transition-transform duration-300 group-hover:scale-150" />
-            </div>
-            <div className="text-center group">
-              <div className="text-2xl sm:text-4xl font-bold mb-2 bg-gradient-to-r from-green-300 to-emerald-300 bg-clip-text text-transparent">
-                25,000
-              </div>
-              <div className="text-green-200 text-xs sm:text-sm">Acres Regenerated</div>
-              <div className="w-8 sm:w-12 h-0.5 bg-gradient-to-r from-green-400 to-emerald-400 mx-auto mt-2 transition-transform duration-300 group-hover:scale-150" />
-            </div>
-            <div className="text-center group">
-              <div className="text-2xl sm:text-4xl font-bold mb-2 bg-gradient-to-r from-green-300 to-emerald-300 bg-clip-text text-transparent">
-                95%
-              </div>
-              <div className="text-green-200 text-xs sm:text-sm">Client Satisfaction</div>
-              <div className="w-8 sm:w-12 h-0.5 bg-gradient-to-r from-green-400 to-emerald-400 mx-auto mt-2 transition-transform duration-300 group-hover:scale-150" />
-            </div>
-          </div>
-        </div>
+        <PartnerCarousel />
 
         {/* Final CTA Section */}
         <div className="mt-12 sm:mt-16 text-center bg-gradient-to-r from-gray-50 to-green-50 rounded-2xl p-6 sm:p-8 border border-green-100">
